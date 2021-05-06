@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Quiz_project'
+    'Quiz_project',
+    'quiz',
+    'question',
+    'result'
 ]
 
 MIDDLEWARE = [
