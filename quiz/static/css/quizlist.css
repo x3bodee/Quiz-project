@@ -2,8 +2,12 @@
     margin-bottom: 10px;
 }
 
+.card{
+    box-shadow: 2px 2px 5px #eeeeee, 1px 1px 3px black;
+}
+
 .card-body{
-    background-color: #62929E;
+    background-color: black;
     color: #eeeeee;
 }
 
@@ -33,7 +37,7 @@
     bottom: 0;
     width: 100%;
     cursor: pointer;
-    background-color: #494b4b;
-    color: #eeeeee;
+    background-color:white;
+    color: black;
     padding: 5px 10px;
 }
