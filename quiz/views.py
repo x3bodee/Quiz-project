@@ -5,6 +5,6 @@ def home(request):
  
     return  render(request,'home.html' , {}) 
 
-def home(request):
+def quizlist(request):
      
     return  render(request,'quiz/quizlist.html' , {}) 
