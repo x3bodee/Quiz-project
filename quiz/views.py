@@ -9,6 +9,11 @@ def quizlist(request):
      
     return  render(request,'quiz/quizlist.html' , {}) 
 
+def addquiz(request):
+     
+    return  render(request,'quiz/addQuiz.html' , {}) 
+
 def startquiz(request):
     
     return  render(request,'startQuiz/startQuiz.html' , {}) 
+
