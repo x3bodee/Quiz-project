@@ -5,4 +5,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('' , views.home , name= "home" ),
+    path('quizlist/' , views.quizlist , name= "quizlist" ),
+    path('startquiz/' , views.startquiz , name= "startquiz" ),
+    path('addquiz/' , views.addquiz , name= "addquiz" ),
 ]
