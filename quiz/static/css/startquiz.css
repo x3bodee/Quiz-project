@@ -1,0 +1,44 @@
+.content{
+    max-width: 80%;
+    padding: 5px 10px;
+    background-color: #F5CB5C;
+    color: black;
+    text-align: left;
+    border-radius: 5px;
+}
+.mg-top{
+    margin-top: 50px;
+}
+
+.qustion{
+    margin-top: 20px;
+}
+
+.border-b{
+    margin: 0 auto;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
+}
+
+.mg-lf{
+    margin-left: 10px;
+}
+
+.submit-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.mg{
+    margin-bottom: 50px;
+}
+
+.btn-light{
+    color: black
+}
+
+.btn-light:hover{
+    color:black
+}
