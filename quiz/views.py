@@ -7,15 +7,15 @@ def home(request):
 
 def quizlist(request):
      
-    return  render(request,'quiz/quizlist.html' , {}) 
+    return  render(request,'students/quizlist.html' , {}) 
 
 def addquiz(request):
      
-    return  render(request,'quiz/addQuiz.html' , {}) 
+    return  render(request,'teachers/addQuiz.html' , {}) 
 
 def startquiz(request):
     
-    return  render(request,'startQuiz/startQuiz.html' , {}) 
+    return  render(request,'students/startQuiz.html' , {}) 
 
 def updatequiz(request):
     
