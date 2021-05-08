@@ -6,7 +6,18 @@
 </head>
 
 <div class="container content mt-3">
-    <h3>Quiz Name</h3>
+
+  
+  <div class="row">
+    <div class="col-md-8 name">
+      <h3>Quiz Name</h3>
+    </div>
+    <div class="col-md-4">
+      <!-- <div class="ten-countdown" id="time"></div> -->
+      <h3 class="ten-countdown" id="time"></h3>
+    </div>
+  </div>
+    
     <div class="row ms-1">
         <div class="col-xs-12 qustion">
             <h6>1 + 1 ?</h6>
@@ -118,4 +129,5 @@
     s
 </div>
 
+<script src="{% static 'js/countdown.js' %}"></script>
 {% endblock  %}
