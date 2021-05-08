@@ -8,4 +8,6 @@ urlpatterns = [
     path('quizlist/' , views.quizlist , name= "quizlist" ),
     path('startquiz/' , views.startquiz , name= "startquiz" ),
     path('addquiz/' , views.addquiz , name= "addquiz" ),
+    path('addquestion/' , views.addquestion , name= "addquestion" ),
+    path('updatequiz/' , views.updatequiz , name= "updatequiz" ),
 ]

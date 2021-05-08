@@ -1,0 +1,43 @@
+.contai{
+    margin-bottom: 10px;
+}
+
+.card{
+    box-shadow: 2px 2px 5px #eee, 1px 1px 3px black;
+}
+
+.card-body{
+    background-color: black;
+    color: #eeeeee;
+}
+
+#hard{
+    /* color: rgb(255, 184, 184) */
+    /* color: red; */
+    color: #eeeeee;
+}
+
+#med{
+    /* color: rgb(239, 255, 169); */
+    /* color: yellow; */
+    color: #eeeeee;
+}
+
+#easy{
+    color: rgb(175, 253, 189);
+    /* color: green; */
+    color: #eeeeee;
+}
+
+.none-link{
+    text-decoration: none;
+}
+
+#btnn{
+    bottom: 0;
+
+    cursor: pointer;
+    background-color:white;
+    color: black;
+    
+}
