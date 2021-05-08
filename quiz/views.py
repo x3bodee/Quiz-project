@@ -13,6 +13,11 @@ def addquiz(request):
      
     return  render(request,'teachers/addQuiz.html' , {}) 
 
+def addquestion(request):
+     
+    return  render(request,'teachers/addQuestion.html' , {}) 
+
+
 def startquiz(request):
     
     return  render(request,'students/startQuiz.html' , {}) 
