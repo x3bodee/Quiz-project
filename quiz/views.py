@@ -17,3 +17,7 @@ def startquiz(request):
     
     return  render(request,'startQuiz/startQuiz.html' , {}) 
 
+def updatequiz(request):
+    
+    return  render(request,'Quiz/updateQuiz.html' , {}) 
+
