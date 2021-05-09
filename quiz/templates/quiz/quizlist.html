@@ -25,99 +25,40 @@
     <!-- end button row-->
     <div class="row grid mt-2 text-center mx-auto" >
 
-
-        <!-- start of quiz -->
+      {% for obj in object_list %}
        
 
-
-
-        <!-- end of quiz -->
-
-
         <!-- start of quiz -->
         <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
+          
             <div class="card"  >
                 <div class="card-body">
-                  <h5 class="card-title">Quiz title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
+                  <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
+                  <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
+                  <p class="card-text">  Duration: {{obj.time}} min</p>
+                  <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
+                  <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
                   <!-- <a href="#" class="card-link">Start Quiz</a> -->
                 </div>
                 <a class="none-link" href="http://google.com"><div class="btnn">Start Quiz</div></a>
+               
               </div>
+        
         </div>
         <!-- end of quiz -->
         
-        <!-- start of quiz -->
-        <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-            <div class="card"  >
-                <div class="card-body">
-                  <h5 class="card-title">Quiz title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                  <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                </div>
-                <a class="none-link" href="http://google.com"><div class="btnn">Start Quiz</div></a>
-                
-              </div>
-        </div>
-        <!-- end of quiz -->
+       
 
-                <!-- start of quiz -->
-                <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                    <div class="card"  >
-                        <div class="card-body">
-                          <h5 class="card-title">Quiz title</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                          <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                        </div>
-                        <a class="none-link" href="http://google.com"><div class="btnn">Start Quiz</div></a>
-                        
-                      </div>
-                </div>
-                <!-- end of quiz -->
-
-                        <!-- start of quiz -->
-        <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-            <div class="card"  >
-                <div class="card-body">
-                  <h5 class="card-title">Quiz title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                  <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                </div>
-                <a class="none-link" href="http://google.com"><div class="btnn">Start Quiz</div></a>
-                
-              </div>
-        </div>
-        <!-- end of quiz -->
+    
 
 
-                <!-- start of quiz -->
-                <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                    <div class="card"  >
-                        <div class="card-body">
-                          <h5 class="card-title">Quiz title</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                          <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                        </div>
-                        <a class="none-link" href="http://google.com"><div class="btnn">Start Quiz</div></a>
-                        
-                      </div>
-                </div>
-                <!-- end of quiz -->
+
 
                 
                 
         
-
+        {% endfor %}
     </div>  
 </div>
 

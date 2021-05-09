@@ -1,13 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render , HttpResponse , redirect
+from django.http import JsonResponse
+from datetime import datetime
+from .models import Quiz
+from django.views.generic import ListView
 
 # Create your views here.
 def home(request):
  
     return  render(request,'home.html' , {}) 
 
-def quizlist(request):
-     
-    return  render(request,'students/quizlist.html' , {}) 
+
+class QuisListView(ListView):
+    model=Quiz
+    template_name='quiz/quizlist.html'
+
+def quiz_view(request , pk):
+    
+    try:
+        quiz=Quiz.objects.get(pk=pk)
+    except Exception:
+        return HttpResponse("error")
+    
+    return render(request , 'quiz/show.html' ,
+    {   
+    "obj" : quiz
+    } )
+
 
 def addquiz(request):
      
