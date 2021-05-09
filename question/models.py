@@ -4,8 +4,8 @@ from quiz.models import Quiz
 # Create your models here.
 
 TYPE_CHOICES =(
-    ('multi','multi'),
-    ('t or f','t or f'),
+    ('multiple','multiple'),
+    ('True or False','True or False'),
 )
 
 class Question(models.Model):

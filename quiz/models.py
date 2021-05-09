@@ -9,7 +9,7 @@ DIFF_CHOICES =(
 
 class Quiz (models.Model):
     name =models.CharField(max_length=150)
-    number_of =models.IntegerField()
+    number_of_question =models.IntegerField()
     time=models.IntegerField()
     score_to_pass=models.IntegerField()
     difficulty=models.CharField(max_length=15,choices=DIFF_CHOICES)
