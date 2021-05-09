@@ -9,5 +9,11 @@ urlpatterns = [
     path('startquiz/' , views.startquiz , name= "startquiz" ),
     path('addquiz/' , views.addquiz , name= "addquiz" ),
     path('addquestion/' , views.addquestion , name= "addquestion" ),
-    path('updatequiz/' , views.updatequiz , name= "updatequiz" ),
+    path('addAnswers/' , views.addAnswers , name= "addAnswers" ),
+    path('quizResult/' , views.quizResult , name= "quizResult" ),
+    path('myquizes/' , views.myquizes , name= "myquizes" ),
+    
+    
+
+
 ]

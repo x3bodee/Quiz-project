@@ -22,7 +22,19 @@ def startquiz(request):
     
     return  render(request,'students/startQuiz.html' , {}) 
 
-def updatequiz(request):
+def myquizes(request):
     
-    return  render(request,'Quiz/updateQuiz.html' , {}) 
+    return  render(request,'Quiz/myquizes.html' , {}) 
+
+def quizResult(request):
+    
+    return  render(request,'teachers/studentResult.html' , {}) 
+
+
+def addAnswers(request):
+    
+    return  render(request,'teachers/addAnswers.html' , {}) 
+
+
+    
 
