@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/startquiz.js' %} " defer></script>
+
+{% endblock scripts %}
+
+
+
 <head>
     <link rel="stylesheet" href="{% static 'css/startquiz.css' %}">
+    <script rel="javascript" type="text/javascript" href="js/jquery-1.11.3.min.js"></script>
 </head>
 
 <div class="container content mt-3">
@@ -10,7 +20,7 @@
   
   <div class="row">
     <div class="col-md-8 name">
-      <h3>Quiz Name</h3>
+      <h3>{{obj.name}}</h3>
     </div>
     <div class="col-md-4">
       <!-- <div class="ten-countdown" id="time"></div> -->
@@ -108,7 +118,12 @@
                           Second default radio jksdjksdjksdjkjksdjkjkdsjkjkdsjksd
                         </label>
                       </div>
-                      
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Second default radio sdsdjkjksdjkdsjkdjskjksdjksd
+                        </label>
+                      </div>
                 </div>
             </div><!-- end of row -->  
         </div><!-- end of quistion -->
@@ -121,11 +136,9 @@
 </div> <!-- end of container -->
 
 <div style="color: white;">
-    s
+    .
 </div>
-{% script block %}
+
 <script src="{% static 'js/countdown.js' %}"></script>
-<script src="{% static 'js/quiz.js' %}"></script>
+<script src="{% static 'js/quizstart.js' %}"></script>
 {% endblock  %}
-
-

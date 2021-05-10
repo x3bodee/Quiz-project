@@ -21,10 +21,28 @@ def quiz_view(request , pk):
     except Exception:
         return HttpResponse("error")
     
-    return render(request , 'quiz/show.html' ,
+    return render(request , 'quiz/startQuiz.html' ,
     {   
     "obj" : quiz
     } )
+def quiz_data_view (request ,pk):
+    quiz=Quiz.objects.get(pk=pk)
+    questions =[]
+    for q in quiz.get_questions():
+        answers=[]
+        for a in q.get_answers():
+            answers.append(a.text)
+        questions.append({str(q):answers})
+    return JsonResponse({
+        'data' : questions,
+        'time' : quiz.time,
+    })
+    
+
+
+
+
+
 
 
 def addquiz(request):
