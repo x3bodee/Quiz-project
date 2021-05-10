@@ -64,11 +64,12 @@
           <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
         </form>
         <div>
+
           {% if not user.is_authenticated %}
             <a href="{% url  'login' %}" class="btn btn-outline-light">Login</a>
             <a href="{% url  'signup' %}" class="btn btn-outline-light">Signup</a>
             {% else %}
-            
+            <!--sfsedgfdsfghsdfghdsgsg-->
             <a href="{% url 'logout' %}" class="btn btn-outline-light"> Logout</a>
             <a class="btn btn-outline-light"> Profile</a> 
             {% endif %}
