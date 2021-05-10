@@ -74,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'user.User'
+
 WSGI_APPLICATION = 'Quiz_project.wsgi.application'
 
 
