@@ -25,6 +25,7 @@ def quiz_view(request , pk):
     {   
     "obj" : quiz
     } )
+    
 def quiz_data_view (request ,pk):
     quiz=Quiz.objects.get(pk=pk)
     questions =[]
