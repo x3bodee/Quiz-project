@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/addquiz.css' %}">
+</head>
+
+<div class="container content mt-3">
+
+
+    <div class="row">
+        <div class="col-md-8 name">
+            <h3>Add quiz</h3>
+        </div>
+
+    </div>
+
+    <div class="row ms-1">
+
+     
+
+
+        <!----------start------------>
+
+        <div id="content" class="colM">
+
+  
+
+            <div id="content-main">
+
+
+
+                <form method="post" id="quiz_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken"
+                        value="">
+                    <div>
+
+
+
+
+
+
+
+                        <fieldset class="module aligned ">
+
+
+
+                            <div class="form-row field-name">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_name">Name:</label>
+
+                                    <input type="text" name="name" class="vTextField" maxlength="150" required=""
+                                        id="id_name">
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-number_of_question">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_number_of_question">Number of question:</label>
+
+                                    <input type="number" name="number_of_question" class="vIntegerField" required=""
+                                        id="id_number_of_question">
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-time">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_time">Time:</label>
+
+                                    <input type="number" name="time" class="vIntegerField" required="" id="id_time">
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-score_to_pass">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_score_to_pass">Score to pass:</label>
+
+                                    <input type="number" name="score_to_pass" class="vIntegerField" required=""
+                                        id="id_score_to_pass">
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row field-difficulty">
+
+
+                                <div>
+
+
+                                    <label class="required" for="id_difficulty">Difficulty:</label>
+
+                                    <select name="difficulty" required="" id="id_difficulty">
+                                        <option value="" selected="">---------</option>
+
+                                        <option value="easy">easy</option>
+
+                                        <option value="medium">medium</option>
+
+                                        <option value="hard">hard</option>
+
+                                    </select>
+
+
+
+                                </div>
+
+                            </div>
+
+                        </fieldset>
+
+                    </div>
+                </form>
+            </div>
+
+
+            <br class="clear">
+        </div>
+
+        <!-----------end----------->
+        <div class="col-xs-12">
+
+            <div class="row">
+                <div class="col-xs-12 col-med-6 mg-lf">
+
+
+
+
+
+                </div>
+            </div><!-- end of row -->
+        </div><!-- end of add quiz  -->
+        <hr class="border-b">
+        <div class="col-xs-12 qustion">
+            <button type="button" class="btn btn-light float-end">Submit</button>
+        </div>
+    </div><!-- end of row ms-1 -->
+
+</div> <!-- end of container -->
+
+<div style="color: white;">
+    s
+</div>
+
+
+
+
+{% endblock %}

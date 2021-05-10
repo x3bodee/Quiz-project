@@ -29,7 +29,7 @@ def quiz_view(request , pk):
 
 def addquiz(request):
      
-    return  render(request,'teachers/addQuiz.html' , {}) 
+    return  render(request,'quiz/addQuiz.html' , {}) 
 
 def addquestion(request):
      
@@ -40,9 +40,9 @@ def startquiz(request):
     
     return  render(request,'students/startQuiz.html' , {}) 
 
-def myquizes(request):
-    
-    return  render(request,'Quiz/myquizes.html' , {}) 
+def myquizes(request ):
+
+    return  render(request,'Quiz/myquizes.html' , { }) 
 
 def quizResult(request):
     
