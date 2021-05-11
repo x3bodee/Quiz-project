@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 
 <head>
@@ -41,7 +42,20 @@
                   <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
                   <!-- <a href="#" class="card-link">Start Quiz</a> -->
                 </div>
-                <button class="btn btn-link modal-button btnn" id="start-but" data-pk={{obj.pk}} style="text-decoration: none;">Start Quiz</button>
+                <button class="btn btn-link modal-button btnn"
+                onclick="
+                const url=window.location.href
+                const modalBtns = [...document.getElementsByClassName('modal-button')]
+                modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
+                const pk=modalBtn.getAttribute('data-pk')
+                window.location.href=url+pk
+                }))
+                "
+                data-pk="{{obj.pk}}" 
+                data-togglr="modal" 
+                data-target="#quizStartModal"
+                
+                style="text-decoration: none;">Start Quiz</button>
                
               </div>
         
@@ -53,10 +67,6 @@
     </div>  
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script src="{% static 'js/filter.js' %}"></script>
-
 {% endblock  %}
+
+
