@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate , logout
-from user.forms import RegistrationForm, UserAuthForm
+from user.forms import RegistrationForm, UserAuthForm, UserUpdateForm
 from user.models import User
+
 
 def signup_view(request):
     context = {}
@@ -59,3 +60,21 @@ def profile_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+def update_view(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        if u_form.is_valid():
+            u_form.save()
+            
+            return redirect('home')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        context={'u_form': u_form}
+
+
+
+    
+    return render(request, 'update.html', context)
+
+    
