@@ -35,8 +35,11 @@
       {% for myquiz in  ob %}
 <!-- start of quiz -->
 <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
+  <form method="POST" action="">
     <div class="card"  >
+      
         <div class="card-body">
+          
           <h5 class="card-title">Quiz Name: {{myquiz.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{myquiz.user}}</h6>
           <p class="card-text">  Number of questions: {{myquiz.number_of_question}}</p>
@@ -49,9 +52,11 @@
       </div>
       <div class="card-footer text-muted">
         <button type="button" class="btn btn-outline-success">Update</button>
-        <button type="button" class="btn btn-outline-danger">Delete</button>
+        <a type="button" class="btn btn-outline-danger"  href="{% url 'delete_quiz' pk=myquiz.id%}"> delete </a>
         <button type="button" class="btn btn-outline-warning">Result</button>
+        
     </div>
+    </form>
 </div>
 <!-- end of quiz -->
 {%endfor%}

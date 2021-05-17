@@ -11,17 +11,19 @@ def home(request):
  
     return  render(request,'home.html' , {}) 
 
+#show all quizes
 
 class QuisListView(ListView):
     model=Quiz
     template_name='quiz/quizlist.html'
-#User quizes
+#show quizes that user create
 def myquizes(request): 
 
     myQui = Quiz.objects.all()
     return render(request , 'quiz/myquizes.html' , 
     {"ob" : myQui  })
 
+#start quiz
 def quiz_view(request , pk):
     
     try:
@@ -96,6 +98,19 @@ def save_quiz_view(request,pk):
 
 
 
+
+
+#delete quiz
+#def deleteQuiz(request , pk):
+#    quiz=Quiz.objects.get(id=pk)
+#    context= {'item':quiz}
+#    return render(request ,'quiz/delete.html', context )
+
+def deleteQuiz(request , pk):
+    quiz=Quiz.objects.get(id=pk)
+    quiz.delete()
+    context= {'item':quiz}
+    return redirect('/myquizes' )
 
 
 
