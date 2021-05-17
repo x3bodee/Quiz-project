@@ -1,4 +1,4 @@
-console.log('Hi Mona');
+console.log('Hi Abdulall');
 
 const url =window.location.href
 
@@ -6,6 +6,7 @@ const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
 const timerBox = document.getElementById('timer-box')
+const conBox= document.getElementById('con1')
 
 const activateTimer = (time) => {
     if (time.toString().length < 2) {
@@ -77,6 +78,7 @@ $.ajax({
         
     },
     error: function(error){
+        console.log('err')
         console.log(error)
     }
 })
@@ -105,8 +107,12 @@ const sendData = () => {
         data: data,
         success: function(response){
             const results = response.results
+            console.log("delete form")
             console.log(results)
-            quizForm.classList.add('not-visible')
+            //quizForm.classList.add('not-visible')
+            quizForm.remove();
+            //conBox.remove()
+            
 
             scoreBox.innerHTML = `${response.passed ? 'Congratulations! ' : 'Try again  '}Your result is ${response.score.toFixed(2)}%`
 
@@ -140,6 +146,7 @@ const sendData = () => {
             })
         },
         error: function(error){
+            console.log('err')
             console.log(error)
         }
     })
@@ -149,4 +156,9 @@ quizForm.addEventListener('submit', e=>{
     e.preventDefault()
 
     sendData()
+    setTimeout(()=>{
+        clearInterval(timer)
+        alert('Time over')
+        sendData()
+    })
 })

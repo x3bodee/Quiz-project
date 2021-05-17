@@ -15,6 +15,12 @@ def home(request):
 class QuisListView(ListView):
     model=Quiz
     template_name='quiz/quizlist.html'
+#User quizes
+def myquizes(request): 
+
+    myQui = Quiz.objects.all()
+    return render(request , 'quiz/myquizes.html' , 
+    {"ob" : myQui  })
 
 def quiz_view(request , pk):
     
@@ -107,9 +113,7 @@ def startquiz(request):
     
     return  render(request,'students/startQuiz.html' , {}) 
 
-def myquizes(request ):
 
-    return  render(request,'Quiz/myquizes.html' , { }) 
 
 def quizResult(request):
     
