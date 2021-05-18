@@ -1,6 +1,6 @@
-
-
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
 
 <head>
     <link rel="stylesheet" href="{% static 'css/startquiz.css' %}">
@@ -29,7 +29,12 @@
 
 <div class="card">
     <div class="card-header">
-      <strong>Quiz name from DB</strong>
+      <strong>
+        Student's Result from 100%
+        {{results.quiz}}
+        
+
+      </strong>
       
     </div>
     <table class="table mb-0">
@@ -42,13 +47,14 @@
           {% for result in  results %}
           
           <tr> <th>{{result.user}}</th>
-          <th>{{result.score}}</th>
+          <th>{{result.score}} %</th>
         </tr>
       </thead>
       <tbody>
         
       </tbody>
       {%endfor%}
+      
     </table>
 
     
@@ -72,7 +78,7 @@
     s
 </div>
 
-
+{% endblock  %}
 
 
 
