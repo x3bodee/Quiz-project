@@ -10,7 +10,7 @@ from .views import (
 
 urlpatterns = [
 
-    path('result/<pk>' , results_view , name="results_view"),
+    path('result/<id>' , results_view , name="results_view"),
 
     
 ]

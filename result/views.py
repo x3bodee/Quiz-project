@@ -14,14 +14,13 @@ from result.models import Result
 
 
 #shows results
-def results_view(request,pk):
-    
-    try:
-        result=Result.objects.get(pk=pk)
-        #result=Result.objects.get(id=1)
-    except Exception:
-        return HttpResponse("error")
-    
+def results_view(request,id):
+ 
+    print(id+"id")
+    result=Result.objects.all().filter(quiz=id)
+
+    print(result)
+
     return render(request , 'quizresult.html' ,
     {   
     "results" : result
