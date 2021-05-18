@@ -19,9 +19,7 @@
     <div class="col-md-6 col-sm-8 col-12">
 
         
-    <h2>{{result.score}}</h2>
-    <h2>{{result.quiz}}</h2>
-    <h2>{{result.user}}</h2>
+
     
 
 
@@ -31,15 +29,19 @@
 
 <div class="card">
     <div class="card-header">
-      <strong>Taken Quizzes</strong>
+      <strong>Quiz name from DB</strong>
       
     </div>
     <table class="table mb-0">
-        {% for result in  results %}
+        
       <thead>
         <tr>
-          <th>{{result.user}}</th>
+          <th>Student Name</th>
+          <th>Score</th></tr>
           
+          {% for result in  results %}
+          
+          <tr> <th>{{result.user}}</th>
           <th>{{result.score}}</th>
         </tr>
       </thead>
