@@ -26,7 +26,6 @@ def signup_view(request):
     return render(request, 'signup.html', context)
 
 def login_view(request):
-
     context = {}
     user =request.user
     if user.is_authenticated:
@@ -67,7 +66,7 @@ def update_view(request):
         if u_form.is_valid():
             u_form.save()
             
-            return redirect('home')
+            return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         context={'u_form': u_form}
@@ -77,4 +76,6 @@ def update_view(request):
     
     return render(request, 'update.html', context)
 
+def resetpass_view(request):
     
+    return render(request, 'resetpass.html')    

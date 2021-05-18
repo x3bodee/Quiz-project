@@ -55,7 +55,7 @@
             {% else %}
             
             <a href="{% url 'logout' %}" class="btn btn-outline-light"> Logout</a>
-            <a href="{% url 'profile' %}" class="btn btn-outline-light"> Profile</a> 
+            <a href="{% url 'profile' %}" class="btn btn-outline-light"> {{request.user.username}}'sProfile</a> 
             {% endif %}
         </div>
 

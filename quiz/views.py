@@ -8,8 +8,8 @@ from result.models import Result
 
 # Create your views here.
 def home(request):
- 
     return  render(request,'home.html' , {}) 
+    
 
 
 class QuisListView(ListView):
