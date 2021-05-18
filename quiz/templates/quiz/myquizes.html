@@ -51,9 +51,10 @@
         
       </div>
       <div class="card-footer text-muted">
-        <button type="button" class="btn btn-outline-success">Update</button>
+        <a type="button" class="btn btn-outline-success">Update</a>
         <a type="button" class="btn btn-outline-danger"  href="{% url 'delete_quiz' pk=myquiz.id%}"> delete </a>
-        <button type="button" class="btn btn-outline-warning">Result</button>
+        <a type="button" class="btn btn-outline-warning" href="{% url 'results_view' %}" >Result</a>
+        
         
     </div>
     </form>
