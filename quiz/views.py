@@ -18,7 +18,7 @@ class QuisListView(ListView):
     template_name='quiz/quizlist.html'
 #show quizes that user create
 def myquizes(request): 
-
+    #user=request.user
     myQui = Quiz.objects.all()
     return render(request , 'quiz/myquizes.html' , 
     {"ob" : myQui  })
