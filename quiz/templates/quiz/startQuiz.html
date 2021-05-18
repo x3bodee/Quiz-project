@@ -3,65 +3,32 @@
 {% block content %}
 
 
+
+<div class="container"  id="con1" style="background-color: #F5CB5C;">
+<div class="row mt-2">
+    <div class="col">
+        <b>{{obj.name}}</b>
+        <p>score to pass: {{obj.score_to_pass}}%</p>
+    </div>
+    <div class="col text-right" id="timer-box"></div>
+</div>
+
+<a href="{% url  'main-view' %}" class="btn btn-danger">leave quiz </a>
+
+<form id="quiz-form" class="mt-3 mb-3">
+    {% csrf_token %}
+    <div id="quiz-box"></div>
+    <button type="submit" class="btn btn-primary mt-3">save</button>
+</form>
+<div id="score-box"></div>
+<div id="result-box"></div>
+
+</div>
+
+
 {% block scripts %}
     <script src="{% static 'js/startquiz.js' %} " defer></script>
 
 {% endblock scripts %}
 
-
-
-<head>
-    <link rel="stylesheet" href="{% static 'css/startquiz.css' %}">
-    <script rel="javascript" type="text/javascript" href="js/jquery-1.11.3.min.js"></script>
-</head>
-
-<div class="container content mt-3">
-
-  
-  <div class="row">
-    <div class="col-md-8 name">
-      <h3>{{obj.name}}</h3>
-    </div>
-    <div class="col-md-4">
-      <!-- <div class="ten-countdown" id="time"></div> -->
-      <h3 class="ten-countdown" id="time"></h3>
-    </div>
-  </div>
-    
-    <div class="row ms-1">
-
-        <div class="col-xs-12 qustion">
-         
-            <div class="row">
-                <div class="col-xs-12 col-med-6 mg-lf">
-                    
-
-                  <form id="quiz-form" class="mt-3 mb-3">
-                        {% csrf_token %}
-                        <div id="quiz-box"></div>
-
-                  
-  
-        
-       
-     
-            </div><!-- end of row -->  
-        </div><!-- end of quistion -->
-        
-        <div class="col-xs-12 qustion">
-            <button type="submit" class="btn btn-light float-end">Submit</button>
-        </div>
-
-      </form>
-        
-    </div>
-
-</div> <!-- end of container -->
-
-<div style="color: white;">
-    .
-</div>
-
-<script src="{% static 'js/countdown.js' %}"></script>
-<script src="{% static 'js/quizstart.js' %}"></script>
 {% endblock  %}
