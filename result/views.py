@@ -17,7 +17,7 @@ from result.models import Result
 def results_view(request,pk):
     
     try:
-        result=Result.objects.get(id=pk)
+        result=Result.objects.get(pk=pk)
         #result=Result.objects.get(id=1)
     except Exception:
         return HttpResponse("error")

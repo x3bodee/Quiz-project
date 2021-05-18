@@ -54,7 +54,7 @@
         <a type="button" class="btn btn-outline-success">Update</a>
         <a type="button" class="btn btn-outline-danger"  href="{% url 'delete_quiz' pk=myquiz.id%}"> delete </a>
 
-        <a type="button" class="btn btn-outline-warning" href="{% url 'results_view' %}" >Result</a>
+        <a type="button" class="btn btn-outline-warning" href="{% url 'results_view' pk=myquiz.id %}" >Result</a>
         
         
     </div>
