@@ -129,7 +129,7 @@ def deleteQuiz(request , pk):
 
 def addquiz(request):
      
-    return  render(request,'quiz/addQuiz.html' , {}) 
+    return  render(request,'quiz/newquiz.html' , {}) 
 
 def addquestion(request):
      
