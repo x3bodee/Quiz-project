@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+
+<h2>Profile</h2>
+
+<h2>{{profile.username}}</h2>
+<h2>{{profile.first_name}}</h2>
+<h2>{{profile.last_name}}</h2>
+<h2>{{profile.email}}</h2>
+<img width="256" height="256" src="{{profile.img}}"></img>
+<h2>{{profile.user_type}}</h2>
+
+<a class="btn btn-primary" href='../update' role="button">Link</a>
+
+<!-- <form method="post">
+    {% csrf_token %}
+    {% for field in registration_form %}
+        <p>
+            {{field.label_tag}}
+            {{field}}
+
+            {% if field.help_text %}
+                <small style="color: grey;">{{field.help_text}}</small>
+            {% endif %}
+
+            {% for error in field.errors %}
+                <p style="color: red;">{{error}}</p>
+            {% endfor %}
+        </p>
+    {% endfor %}
+    <button type="submit">Register</button>
+
+</form> -->
+
+
+{% endblock content %}
