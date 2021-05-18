@@ -38,19 +38,6 @@ def quiz_view(request , pk):
 
 
     
-#shows results
-def results_view(request):
-    
-    try:
-        result=Result.objects.all()
-    except Exception:
-        return HttpResponse("error")
-    
-    return render(request , 'quiz/results.html' ,
-    {   
-    "results" : result
-    } )
-
 
     
 # this view for sending data 

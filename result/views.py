@@ -1,9 +1,30 @@
-from django.shortcuts import render
-from quiz.models import Quiz
+from django.shortcuts import render , HttpResponse , redirect
+from django.http import JsonResponse
+from django.views.generic import ListView
+from question.models import Answer, Question
 from result.models import Result
-from user.models import User
 
 # Create your views here.
 
 
-#show results 
+
+#class QuisListView(ListView):
+#    model=Result
+#    template_name='quiz/results.html'
+
+
+#shows results
+def results_view(request):
+    
+    try:
+        result=Result.objects.all()
+        #result=Result.objects.get(id=1)
+    except Exception:
+        return HttpResponse("error")
+    
+    return render(request , 'quizresult.html' ,
+    {   
+    "results" : result
+    } )
+
+
