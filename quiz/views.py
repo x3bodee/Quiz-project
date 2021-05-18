@@ -11,11 +11,19 @@ def home(request):
  
     return  render(request,'home.html' , {}) 
 
+#show all quizes
 
 class QuisListView(ListView):
     model=Quiz
     template_name='quiz/quizlist.html'
+#show quizes that user create
+def myquizes(request): 
 
+    myQui = Quiz.objects.all()
+    return render(request , 'quiz/myquizes.html' , 
+    {"ob" : myQui  })
+
+#start quiz
 def quiz_view(request , pk):
     
     try:
@@ -27,6 +35,23 @@ def quiz_view(request , pk):
     {   
     "obj" : quiz
     } )
+
+
+    
+#shows results
+def results_view(request):
+    
+    try:
+        result=Result.objects.all()
+    except Exception:
+        return HttpResponse("error")
+    
+    return render(request , 'quiz/results.html' ,
+    {   
+    "results" : result
+    } )
+
+
     
 # this view for sending data 
 def quiz_data_view (request ,pk):
@@ -92,6 +117,14 @@ def save_quiz_view(request,pk):
 
 
 
+#delete quiz
+def deleteQuiz(request , pk):
+    quiz=Quiz.objects.get(id=pk)
+    quiz.delete()
+    context= {'item':quiz}
+    return redirect('/myquizes' )
+
+
 
 
 def addquiz(request):
@@ -107,9 +140,7 @@ def startquiz(request):
     
     return  render(request,'students/startQuiz.html' , {}) 
 
-def myquizes(request ):
 
-    return  render(request,'Quiz/myquizes.html' , { }) 
 
 def quizResult(request):
     
