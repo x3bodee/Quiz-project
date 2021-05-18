@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<p>Are you sure you want to delete {{item}} quiz?</p>
+<form method="POST">
+<a href="{% url'home' %}">Cancel</a>
+<input type="submit" name="Confirm">
+</form>
+{% endblock  %}
