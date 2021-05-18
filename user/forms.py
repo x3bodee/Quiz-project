@@ -36,4 +36,12 @@ class UserAuthForm(forms.ModelForm):
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model=User
-        fields=['username', 'first_name','last_name','email', 'img']
+        fields=['first_name','last_name','email', 'img']
+
+class UserPassRes(forms.ModelForm):
+    password = forms.CharField(label='Password' , widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields= ['password']
+

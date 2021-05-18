@@ -8,8 +8,8 @@ from result.models import Result
 
 # Create your views here.
 def home(request):
- 
     return  render(request,'home.html' , {}) 
+    
 
 #show all quizes
 
@@ -35,6 +35,23 @@ def quiz_view(request , pk):
     {   
     "obj" : quiz
     } )
+
+
+    
+#shows results
+def results_view(request):
+    
+    try:
+        result=Result.objects.all()
+    except Exception:
+        return HttpResponse("error")
+    
+    return render(request , 'quiz/results.html' ,
+    {   
+    "results" : result
+    } )
+
+
     
 # this view for sending data 
 def quiz_data_view (request ,pk):
@@ -101,11 +118,6 @@ def save_quiz_view(request,pk):
 
 
 #delete quiz
-#def deleteQuiz(request , pk):
-#    quiz=Quiz.objects.get(id=pk)
-#    context= {'item':quiz}
-#    return render(request ,'quiz/delete.html', context )
-
 def deleteQuiz(request , pk):
     quiz=Quiz.objects.get(id=pk)
     quiz.delete()
@@ -117,7 +129,7 @@ def deleteQuiz(request , pk):
 
 def addquiz(request):
      
-    return  render(request,'quiz/addQuiz.html' , {}) 
+    return  render(request,'quiz/newquiz.html' , {}) 
 
 def addquestion(request):
      

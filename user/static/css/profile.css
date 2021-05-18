@@ -1,0 +1,28 @@
+#profileBox {
+    display: flex;
+
+}
+
+
+
+#infobox{
+    display: flex;
+    padding-right: 20px
+    
+}
+
+#f{
+    display: flex;
+    background-color: red;
+}
+img{
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
+
+.bod{
+    background-color: blue;
+    height: 100%;
+}
