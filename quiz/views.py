@@ -26,15 +26,32 @@ def myquizes(request):
 #start quiz
 def quiz_view(request , pk):
     
-    try:
-        quiz=Quiz.objects.get(pk=pk)
-    except Exception:
-        return HttpResponse("error")
-    
-    return render(request , 'quiz/startQuiz.html' ,
-    {   
-    "obj" : quiz
-    } )
+
+    quiz=Quiz.objects.get(pk=pk)
+    counter = Result.objects.filter(quiz=pk,user=request.user.id).count()
+    #result=Result.objects.get(pk=pk)
+    print(quiz.quiz_type)
+    if quiz.quiz_type==True:
+        return render(request , 'quiz/startQuiz.html' ,
+        {   
+        "obj" : quiz
+        } )
+    elif  quiz.quiz_type==False:
+        if counter > 0 :
+            result = Result.objects.get(quiz=pk,user=request.user.id)
+            return render(request , 'quiz/private.html' ,
+            {   
+                "obj" : quiz,
+                "resutl":result,
+            } )
+        else:
+            return render(request , 'quiz/startQuiz.html' ,
+        {   
+        "obj" : quiz
+        } )
+        
+
+
 
 
     
