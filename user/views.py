@@ -4,6 +4,9 @@ from user.forms import RegistrationForm, UserAuthForm, UserUpdateForm
 from user.models import User
 
 
+
+
+
 def signup_view(request):
     context = {}
     if request.POST:
@@ -78,4 +81,7 @@ def update_view(request):
 
 def resetpass_view(request):
     
-    return render(request, 'resetpass.html')    
+    
+    
+    return render(request, 'password_change.html')
+ 
