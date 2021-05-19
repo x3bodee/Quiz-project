@@ -135,6 +135,7 @@ let addChoice = function addChoicee(e){
     let parent = e.parentNode
     let addch = parent.querySelector("#addch")
     let question_id = parent.querySelector("input")
+    console.log(question_id.name+"*******")
     value = parseInt(parent.getAttribute('value'))
     value++
     console.log(value)
@@ -144,7 +145,7 @@ let addChoice = function addChoicee(e){
     inpput.type="text"
     inpput.required = true;
     inpput.className="ch"+value
-    inpput.name="ch-"+value
+    inpput.name="ch-"+value+" ### "+question_id.name
     inpput.placeholder="Enter the choice"
     
     parent.insertBefore(inpput,addch);

@@ -134,13 +134,19 @@ def convertToArr(obj):
             arr.append(item+" - "+obj[item])
     return arr
 
+#['q-1$$TorF - 1+1=2', 'q-1-answer - true', 'q-2 - 5*5',
+# 'q-2-answer - 25', 'ch-2 ### q-2 - 22', 'ch-3 ### q-2 - 23', 
+# 'ch-4 ### q-2 - 24']
+
 def covertStrToQueries(arr):
     for item in arr:
         subarr = item.split(" - ")
-        item=subarr
+        if subarr[0]== "q-":
+            print()
         print(subarr)
+    print("Quistion : ")
+    print("choiceis : ")
     print(arr)
-            
 
 
 def addquiz(request):
