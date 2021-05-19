@@ -71,6 +71,7 @@ def save_quiz_view(request,pk):
 
         user=request.user
         quiz=Quiz.objects.get(pk=pk)
+        
 
         score = 0
         multipler = 100/ quiz.number_of_question
@@ -93,8 +94,19 @@ def save_quiz_view(request,pk):
             else:
                 results.append({str(q):'Not answered'})
         score_ =score * multipler 
-        Result.objects.create(quiz=quiz,user=user,score=score_)
-        #Result.objects.get(pk=pk).update(quiz=quiz,user=user,score=score_)
+        print("the count of the ruselt :")
+        # print(Result.objects.filter(quiz=quiz.id,user=user.id).count())
+        if Result.objects.filter(quiz=quiz.id,user=user.id).count() > 0:
+            print('there is user')
+            Result.objects.filter(quiz=quiz.id,user=user.id).delete()
+            print("old score is deleted")
+            Result.objects.create(quiz=quiz,user=user,score=score_)
+            print("the score is replaced")
+        else:
+            print('there is no old score')
+            Result.objects.create(quiz=quiz,user=user,score=score_)
+            
+            
 
         if score_ >= quiz.score_to_pass:
             return JsonResponse({'passed':True,'score':score_ ,'results': results})

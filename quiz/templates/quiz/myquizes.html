@@ -31,9 +31,10 @@
        
       <!-- end of quiz -->
      
-      
-      
+     
+
       {% for myquiz in  ob %}
+      
 <!-- start of quiz -->
 <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
   <form method="POST" action="">
@@ -46,7 +47,6 @@
           <p class="card-text">  Number of questions: {{myquiz.number_of_question}}</p>
           <p class="card-text">  Duration: {{myquiz.time}} min</p>
           <p class="card-text">  Score To Pass: {{myquiz.score_to_pass}} % </p>
-          <p class="card-text">  Created By: {{myquiz.created_by}}  </p>
           <h6 class="card-subtitle mb-2  " id="easy">{{myquiz.difficulty}}</h6>
           
           <!-- <a href="#" class="card-link">Start Quiz</a> -->

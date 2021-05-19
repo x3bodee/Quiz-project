@@ -15,6 +15,9 @@ class Quiz (models.Model):
     score_to_pass=models.IntegerField()
     difficulty=models.CharField(max_length=15,choices=DIFF_CHOICES)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    quiz_type= models.BooleanField(default=False)
+
+    
 
     def __str__(self):
         return f"{self.name}"
