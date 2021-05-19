@@ -111,7 +111,7 @@ const sendData = () => {
             console.log(results)
             //quizForm.classList.add('not-visible')
             quizForm.remove();
-            //conBox.remove()
+            timerBox.remove();
             
 
             scoreBox.innerHTML = `${response.passed ? 'Congratulations! ' : 'Try again  '}Your result is ${response.score.toFixed(2)}%`
