@@ -125,10 +125,43 @@ def deleteQuiz(request , pk):
     return redirect('/myquizes' )
 
 
+def convertToArr(obj):
+    dele=["csrfmiddlewaretoken","name","time","ispublic","difficulty","type"]
+    arr=[]
+    for item in obj:
+        print(item)
+        if item not in dele:
+            arr.append(item+" - "+obj[item])
+    return arr
+
+def covertStrToQueries(arr):
+    for item in arr:
+        subarr = item.split(" - ")
+        item=subarr
+        print(subarr)
+    print(arr)
+            
 
 
 def addquiz(request):
-     
+    
+    if request.POST:
+        print("POST")
+        obj=request.POST
+        name = obj["name"]
+        time = obj["time"]
+        dif = obj["difficulty"]
+        public=""
+        if obj["ispublic"] == "public":
+            public = obj["ispublic"]
+        arr =convertToArr(obj)
+        print(arr)
+        covertStrToQueries(arr)
+        # print(request.POST.remove(name))
+        
+        
+
+    print("done :)")
     return  render(request,'quiz/newquiz.html' , {}) 
 
 def addquestion(request):
