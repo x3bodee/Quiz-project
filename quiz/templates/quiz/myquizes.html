@@ -2,8 +2,9 @@
 {% load static %}
 {% block content %}
 
+
 <head>
-    <link rel="stylesheet" href="{% static 'css/updatequiz.css' %}">
+  <link rel="stylesheet" href="{% static 'css/quizlist.css' %}">
 </head>
 
 <div class="container contai">
@@ -44,8 +45,10 @@
           <h6 class="card-subtitle mb-2 text-muted">{{myquiz.user}}</h6>
           <p class="card-text">  Number of questions: {{myquiz.number_of_question}}</p>
           <p class="card-text">  Duration: {{myquiz.time}} min</p>
-          <p class="card-text">  Score To Pass: {{myquiz.score_to_pass}}</p>
+          <p class="card-text">  Score To Pass: {{myquiz.score_to_pass}} % </p>
+          <p class="card-text">  Created By: {{myquiz.created_by}}  </p>
           <h6 class="card-subtitle mb-2  " id="easy">{{myquiz.difficulty}}</h6>
+          
           <!-- <a href="#" class="card-link">Start Quiz</a> -->
         </div>
         
@@ -53,7 +56,8 @@
       <div class="card-footer text-muted">
         <a type="button" class="btn btn-outline-success">Update</a>
         <a type="button" class="btn btn-outline-danger"  href="{% url 'delete_quiz' pk=myquiz.id%}"> delete </a>
-        <a type="button" class="btn btn-outline-warning" href="{% url 'results_view' %}" >Result</a>
+
+        <a type="button" class="btn btn-outline-warning" href="{% url 'results_view' id=myquiz.id %}" >Result</a>
         
         
     </div>
@@ -69,6 +73,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script src="{% static 'js/filter.js' %}"></script>
+
 
 {% endblock  %}

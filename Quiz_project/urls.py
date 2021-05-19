@@ -19,7 +19,8 @@ from django.urls import path ,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , include('quiz.urls') ),
-    # path('' , include('question.urls') ),
-    path('user/' , include('user.urls'))
+    #path('' , include('result.urls') ),
+    path('user/' , include('user.urls')),
+    path('' , include('result.urls')),
     
 ]
