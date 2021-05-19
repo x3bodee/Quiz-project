@@ -1,3 +1,32 @@
-you already submitted this quiz
-{{obj.name}}
-your result is :{{resutl.score}}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/quizlist.css' %}">
+  </head>
+
+<div class="row mt-1">
+<div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
+
+
+
+
+<div class="card"  >
+      
+    <div class="card-body">
+      
+      <h5 class="card-title">You already submitted {{obj.name}} quiz</h5>
+  
+      <h6 class="card-subtitle mb-2  " id="easy">Your result is :{{resutl.score}}</h6>
+      
+      
+    </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+{% endblock  %}
