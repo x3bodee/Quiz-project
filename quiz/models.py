@@ -1,6 +1,7 @@
 from django.db import models
 import random 
 from user.models import User
+from datetime import datetime
 # Create your models here.
 DIFF_CHOICES =(
     ('easy','easy'),
@@ -16,6 +17,7 @@ class Quiz (models.Model):
     difficulty=models.CharField(max_length=15,choices=DIFF_CHOICES)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     quiz_type= models.BooleanField(default=False)
+    date = models.DateField(null=True , default=datetime.now)
 
     
 
