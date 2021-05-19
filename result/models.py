@@ -11,4 +11,4 @@ class Result(models.Model):
     score = models.FloatField()
 
     def __str__(self):
-        return str(self.pk)
+        return str(self.pk)+ "-" + str(self.score)

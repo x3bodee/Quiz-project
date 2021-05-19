@@ -38,19 +38,6 @@ def quiz_view(request , pk):
 
 
     
-#shows results
-def results_view(request):
-    
-    try:
-        result=Result.objects.all()
-    except Exception:
-        return HttpResponse("error")
-    
-    return render(request , 'quiz/results.html' ,
-    {   
-    "results" : result
-    } )
-
 
     
 # this view for sending data 
@@ -107,6 +94,7 @@ def save_quiz_view(request,pk):
                 results.append({str(q):'Not answered'})
         score_ =score * multipler 
         Result.objects.create(quiz=quiz,user=user,score=score_)
+        #Result.objects.get(pk=pk).update(quiz=quiz,user=user,score=score_)
 
         if score_ >= quiz.score_to_pass:
             return JsonResponse({'passed':True,'score':score_ ,'results': results})
