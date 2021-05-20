@@ -42,12 +42,15 @@
       <thead>
         <tr>
           <th>Student Name</th>
-          <th>Score</th></tr>
+          <th>Score</th>
+          <th>Submission Date</th>
+        </tr>
           
           {% for result in  results %}
           
           <tr> <th>{{result.user}}</th>
           <th>{{result.score}} %</th>
+          <th>{{result.date}} </th>
         </tr>
       </thead>
       <tbody>
