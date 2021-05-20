@@ -39,15 +39,17 @@ function addQuestion(){
         let tr=document.createElement('option')
         let fa=document.createElement('option')
         tr.value = true
-        tr.text="true"
+        tr.text="True"
         fa.value = false
-        fa.text="false"
+        fa.text="False"
         select.id="q-"+q+"-answer"
         select.name="q-"+q+"-answer"
         select.appendChild(tr)
         select.appendChild(fa)
         div.setAttribute("type-value","0")
         inpput.name+="$$TorF"
+        
+        // inpput.name="ch-"+value+" ### "+namee[0]
     }else{
     // create  answer for mcq
     answer.type="text"
@@ -55,6 +57,7 @@ function addQuestion(){
     answer.placeholder="Enter the Answer"
     answer.id="q"+q+"-answer"
     answer.name="q-"+q+"-answer"
+    inpput.name+="$$MCQ"
     div.setAttribute("type-value","1")
     }
 
@@ -145,7 +148,8 @@ let addChoice = function addChoicee(e){
     inpput.type="text"
     inpput.required = true;
     inpput.className="ch"+value
-    inpput.name="ch-"+value+" ### "+question_id.name
+    namee=question_id.name.split("$$")
+    inpput.name="ch-"+value+" ### "+namee[0]
     inpput.placeholder="Enter the choice"
     
     parent.insertBefore(inpput,addch);

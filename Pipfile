@@ -6,8 +6,9 @@ name = "pypi"
 [packages]
 django = "*"
 psycopg2-binary = "*"
+django-heroku = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9.4"
+python_version = "3.9.0"
