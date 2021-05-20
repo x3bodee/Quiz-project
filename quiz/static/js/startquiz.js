@@ -1,25 +1,20 @@
 console.log('Hi Abdulall');
-
 const url =window.location.href
-
 const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
 const timerBox = document.getElementById('timer-box')
 const conBox= document.getElementById('con1')
-
 const activateTimer = (time) => {
     if (time.toString().length < 2) {
         timerBox.innerHTML = `<b>0${time}:00</b>`
     } else {
         timerBox.innerHTML = `<b>${time}:00</b>`
     }
-
     let minutes = time - 1
     let seconds = 60
     let displaySeconds
     let displayMinutes
-
     const timer = setInterval(()=>{
         seconds --
         if (seconds < 0) {
@@ -44,13 +39,9 @@ const activateTimer = (time) => {
                 sendData()
             }, 500)
         }
-
         timerBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`
     }, 1000)
 }
-
-
-
 $.ajax({
     type: 'GET',
     url: `${url}data`,
@@ -70,24 +61,19 @@ $.ajax({
                             <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
                             <label for="${question}">${answer}</label>
                         </div>
-                        
                     `
                 })
             }
         });
         activateTimer(response.time)
-        
     },
     error: function(error){
         console.log('err')
         console.log(error)
     }
 })
-
-
 const quizForm = document.getElementById('quiz-form')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
-
 const sendData = () => {
     const elements = [...document.getElementsByClassName('ans')]
     const data = {}
@@ -101,7 +87,6 @@ const sendData = () => {
             }
         }
     })
-
     $.ajax({
         type: 'POST',
         url: `${url}save/`,
@@ -113,18 +98,13 @@ const sendData = () => {
             //quizForm.classList.add('not-visible')
             quizForm.remove();
             timerBox.remove();
-            
-
             scoreBox.innerHTML = `${response.passed ? 'Congratulations! ' : 'Try again  '}Your result is ${response.score.toFixed(2)}%`
-
             results.forEach(res=>{
                 const resDiv = document.createElement("div")
                 for (const [question, resp] of Object.entries(res)){
-
                     resDiv.innerHTML += question
                     const cls = ['container', 'p-3', 'text-light', 'h6']
                     resDiv.classList.add(...cls)
-
                     if (resp=='Not answered') {
                         resDiv.innerHTML += '- not answered'
                         resDiv.classList.add('bg-danger')
@@ -132,7 +112,6 @@ const sendData = () => {
                     else {
                         const answer = resp['answered']
                         const correct = resp['correct_answer']
-
                         if (answer == correct) {
                             resDiv.classList.add('bg-success')
                             resDiv.innerHTML += ` answered: ${answer}`
@@ -152,10 +131,8 @@ const sendData = () => {
         }
     })
 }
-
 quizForm.addEventListener('submit', e=>{
     e.preventDefault()
-
     sendData()
     setTimeout(()=>{
         clearInterval(timer)

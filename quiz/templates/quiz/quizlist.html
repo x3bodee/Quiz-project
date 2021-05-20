@@ -7,26 +7,20 @@
     <link rel="stylesheet" href="{% static 'css/quizlist.css' %}">
     
 </head>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 
-=======
 <div id="baaack">
->>>>>>> Stashed changes
-=======
 <div id="baaack">
->>>>>>> 68ec2c34b807f54b5834757942e1d5574af90c8c
 <div class="container contai">
     
     <!-- button row-->
     <div class="row mt-1">
-        <div class="col-12 col-md-6 col-xl-4 mx-auto text-center">
+        <div class="col-12 col-md-6 col-xl-4 mx-auto mt-2 text-center">
             <div class="btn-group mb-5 flex-wrap button-group
              filter-button-group" role="group">
   
              <button type="button" class="btn btn-classified" data-filter="*">All</button>
              <button type="button" class="btn btn-classified" data-filter=".hard">easy</button>
-             <button type="button" class="btn btn-classified" data-filter=".mid">Meduim</button>
+             <button type="button" class="btn btn-classified" data-filter=".medium">Meduim</button>
              <button type="button" class="btn btn-classified" data-filter=".easy">Hard</button>
              
             </div>
@@ -34,27 +28,12 @@
       </div>
     <!-- end button row-->
     <div class="row grid mt-2 text-center mx-auto" >
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 68ec2c34b807f54b5834757942e1d5574af90c8c
-      
-
-
-
-
-
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> 68ec2c34b807f54b5834757942e1d5574af90c8c
 
       {% for obj in object_list %}
        
-
+      {% if obj.quiz_type %}
         <!-- start of quiz -->
-        <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
+        <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 {{obj.difficulty}}" >
           
             <div class="card" style="background-color: white;" >
                 <div class="card-body" >
@@ -68,56 +47,26 @@
                   <!-- <a href="#" class="card-link">Start Quiz</a> -->
                 </div>
               </div>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        
+              <div class="card-footer text-muted" >
+                <button class="btnn btn-link modal-button btnn btn-outline-success m-1 p-1"
+                onclick="
+                const url=window.location.href
+                const modalBtns = [...document.getElementsByClassName('modal-button')]
+                modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
+                const pk=modalBtn.getAttribute('data-pk')
+                window.location.href=url+pk
+                }))
+                "
+                data-pk="{{obj.pk}}" 
+                data-togglr="modal" 
+                data-target="#quizStartModal"
+                
+                style="text-decoration: none;">Start Quiz</button>
+              </div>
         </div>
-=======
-               <div class="card-footer text-muted" >
-              <button class="btnn btn-link modal-button btnn btn-outline-success m-1 p-1"
-              onclick="
-              const url=window.location.href
-              const modalBtns = [...document.getElementsByClassName('modal-button')]
-              modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-              const pk=modalBtn.getAttribute('data-pk')
-              window.location.href=url+pk
-              }))
-              "
-              data-pk="{{obj.pk}}" 
-              data-togglr="modal" 
-              data-target="#quizStartModal"
-              
-              style="text-decoration: none;">Start Quiz</button></div>
+        {%endif%}
+               
               </div>
-
-              
-        
-        
-        
->>>>>>> Stashed changes
-=======
-               <div class="card-footer text-muted" >
-              <button class="btnn btn-link modal-button btnn btn-outline-success m-1 p-1"
-              onclick="
-              const url=window.location.href
-              const modalBtns = [...document.getElementsByClassName('modal-button')]
-              modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-              const pk=modalBtn.getAttribute('data-pk')
-              window.location.href=url+pk
-              }))
-              "
-              data-pk="{{obj.pk}}" 
-              data-togglr="modal" 
-              data-target="#quizStartModal"
-              
-              style="text-decoration: none;">Start Quiz</button></div>
-              </div>
-
-              
-        
-        
-        
->>>>>>> 68ec2c34b807f54b5834757942e1d5574af90c8c
         <!-- end of quiz -->
        
         
