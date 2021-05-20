@@ -23,8 +23,8 @@ class QuisListView(ListView):
 
 #show quizes that user create
 def myquizes(request): 
-    #user=request.user
-    myQui = Quiz.objects.all()
+    user=request.user
+    myQui = Quiz.objects.filter(created_by=user)
     return render(request , 'quiz/myquizes.html' , 
     {"ob" : myQui  })
 
@@ -106,14 +106,13 @@ def quiz_data_view (request ,pk):
         answers=[]
         for a in q.get_answers():
             answers.append(a.text)
-            print(a.text)
-        print("q.get_answers")
-        print(answers)
         questions.append({str(q):answers})
     return JsonResponse({
         'data' : questions,
         'time' : quiz.time,
     })
+
+
  #save students answers   
 def save_quiz_view(request,pk):
     #print(request.POST)
@@ -129,18 +128,14 @@ def save_quiz_view(request,pk):
             question=Question.objects.get(text=k)
             questions.append(question)
         print(questions)
-
         user=request.user
         quiz=Quiz.objects.get(pk=pk)
-        
-
         score = 0
         multipler = 100/ quiz.number_of_question
         results =[]
         correct_answer= None 
         for q in questions:
             a_selected =request.POST.get(q.text)
-
             if a_selected !="":
                 question_answers=Answer.objects.filter(question=q)
                 for a in question_answers:
@@ -166,14 +161,10 @@ def save_quiz_view(request,pk):
         else:
             print('there is no old score')
             Result.objects.create(quiz=quiz,user=user,score=score_)
-            
-            
-
         if score_ >= quiz.score_to_pass:
             return JsonResponse({'passed':True,'score':score_ ,'results': results})
         else:
             return JsonResponse({'passed': False ,'score':score_ ,'results': results})
-
 
 
 
