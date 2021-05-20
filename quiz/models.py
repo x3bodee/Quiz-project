@@ -10,16 +10,16 @@ DIFF_CHOICES =(
 )
 
 class Quiz (models.Model):
-    name =models.CharField(max_length=150)
-    number_of_question =models.IntegerField()
-    time=models.IntegerField()
-    score_to_pass=models.IntegerField()
-    difficulty=models.CharField(max_length=15,choices=DIFF_CHOICES)
+    
+    name =models.CharField(max_length=150,null=False)
+    number_of_question =models.IntegerField(null=False)
+    time=models.IntegerField(null=False)
+    score_to_pass=models.IntegerField(null=False)
+    difficulty=models.CharField(null=False,max_length=15,choices=DIFF_CHOICES)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     quiz_type= models.BooleanField(default=True)
     date = models.DateField(null=True , default=datetime.now)
 
-    
 
     def __str__(self):
         return f"{self.name}"
@@ -28,6 +28,6 @@ class Quiz (models.Model):
         questions= list(self.question_set.all())
         random.shuffle(questions)
         return questions[:self.number_of_question]
-
+        
     class Meta:
         verbose_name_plural = 'Quizes'
