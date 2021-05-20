@@ -4,19 +4,74 @@
 {% block content %}
 
 <head>
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    
+
 </head>
 
-<h2>Profile</h2>
+<div class="row py-5 px-4">
+    <div class="col-md-6 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-2 pb-4 cover">
+                <div class="media align-items-end profile-head" id="infobox">
+                    <div class="profile mr-3"><img width="200" height="200" src="{{profile.img}}"></img></div>
+                    <div id="Pinfo">
+                        <h2> User name:  <span style="color:blue">{{profile.username}}</span></h2>
+                        <h2> First name:  <span style="color:blue">{{profile.first_name}}</span></h2>
+                        <h2> Last name: <span style="color:blue">{{profile.last_name}}</span></h2>
+                        <h2> E-mail:  <span style="color:blue">{{profile.email}}</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="px-4 py-3">
+                <h5 class="mb-0"></h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <a class="btn btn-primary" href='../update' role="button">Update</a>
+                    <a class="btn btn-primary" href="{% url 'password_change' %}" role="button">reset password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div  style="margin-top: 164.5px;"></div>
 
-<h2>{{profile.username}}</h2>
-<h2>{{profile.first_name}}</h2>
-<h2>{{profile.last_name}}</h2>
-<h2>{{profile.email}}</h2>
+
+<!-- <h2>Profile</h2>
+<div id="profileBox">
+<h2> User name:{{profile.username}} </h2>
+<h2> First name:{{profile.first_name}} </h2>
+<h2> Last name:{{profile.last_name}} </h2>
+<h2> E-mail:{{profile.email}} </h2>
+</div>
 <img width="256" height="256" src="{{profile.img}}"></img>
 <h2>{{profile.user_type}}</h2>
 
-<a class="btn btn-primary" href='../update' role="button">Link</a>
+<a class="btn btn-primary" href='../update' role="button">Link</a> -->
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <form method="post">
     {% csrf_token %}

@@ -36,4 +36,7 @@ class UserAuthForm(forms.ModelForm):
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model=User
-        fields=['username', 'first_name','last_name','email', 'img']
+        fields=['first_name','last_name','email', 'img']
+
+
+

@@ -2,9 +2,13 @@
 
 {% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
+</head>
 
 <h2>Login</h2>
+<div class="login">
 <form method="post">
     {% csrf_token %}
     {% for field in login_form %}
@@ -29,9 +33,9 @@
                 </div>
             {% endif %}
             
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Login</button>
 
 </form>
-
+</div>
 
 {% endblock content %}
