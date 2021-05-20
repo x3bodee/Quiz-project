@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 
-<h2>Register</h2>
-<form method="post">
+<h2 style="    color: rgb(187, 160, 110); margin-left: 880px;
+">Register</h2>
+<div class="login"> 
+<form method="post" class="fo">
     {% csrf_token %}
     {% for field in registration_form %}
         <p>
@@ -24,9 +26,9 @@
             {% endfor %}
         </p>
     {% endfor %}
-    <button type="submit">Register</button>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
 
 </form>
-
-
+</div>
+<section style="background-color:#616161; height: 1px; margin-top: 474px;"></section>
 {% endblock content %}
