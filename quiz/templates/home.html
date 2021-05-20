@@ -28,6 +28,17 @@
   <title>Quiz</title>
 </head>
 <body>
+  {% if message%}
+  {% for message in messages %}
+<div class="alert alert-{{message.tags}}" role="alert">
+  <h4 class="alert-heading text-center text-upper">
+    {{message}}
+  </h4>
+
+</div>
+  {%endfor%}
+
+  {% endif %}
   
   <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: black;">
     <div class="container ">

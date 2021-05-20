@@ -5,9 +5,11 @@ from .models import Quiz
 from django.views.generic import ListView
 from question.models import Answer, Question
 from result.models import Result
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
+    
     return  render(request,'home.html' , {}) 
     
 
@@ -16,6 +18,7 @@ def home(request):
 class QuisListView(ListView):
     model=Quiz
     template_name='quiz/quizlist.html'
+
 #show quizes that user create
 def myquizes(request): 
     #user=request.user
@@ -139,6 +142,7 @@ def deleteQuiz(request , pk):
     quiz=Quiz.objects.get(id=pk)
     quiz.delete()
     context= {'item':quiz}
+    messages.add_message(request,messages.SUCCESS,"quiz deleted ")
     return redirect('/myquizes' )
 
 
@@ -185,6 +189,7 @@ def addquiz(request):
         
 
     print("done :)")
+    messages.add_message(request,messages.SUCCESS,"Quiz has been added ")
     return  render(request,'quiz/newquiz.html' , {}) 
 
 def addquestion(request):

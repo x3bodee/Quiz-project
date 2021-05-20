@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate , logout
 from user.forms import RegistrationForm, UserAuthForm, UserUpdateForm
 from user.models import User
-
+from django.contrib import messages
 
 
 
@@ -32,6 +32,7 @@ def login_view(request):
     context = {}
     user =request.user
     if user.is_authenticated:
+        messages.add_message(request,messages.SUCCESS,"loggined succseefuly ")
         return redirect('home')
     
     if request.POST:
