@@ -11,16 +11,15 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
-    
     return  render(request,'home.html' , {}) 
-    
 
 #show all quizes
-
 class QuisListView(ListView):
     model=Quiz
     template_name='quiz/quizlist.html'
 
+
+@login_required(login_url='/user/login/')
 #show quizes that user create
 def myquizes(request): 
     user=request.user
@@ -29,9 +28,9 @@ def myquizes(request):
     {"ob" : myQui  })
 
 #start quiz
+@login_required(login_url='/user/login/')
 def quiz_view(request , pk):
     
-
     quiz=Quiz.objects.get(pk=pk)
     counter = Result.objects.filter(quiz=pk,user=request.user.id).count()
     #result=Result.objects.get(pk=pk)
@@ -55,34 +54,7 @@ def quiz_view(request , pk):
         "obj" : quiz
         } )
         
-
-
-
-
-    
-# def quiz_data_view (request ,pk):
-#     quiz=Quiz.objects.get(pk=pk)
-#     questionss=Question.objects.filter(quiz=pk)
-#     questions=[]
-#     answers=[]
-#     for item in questionss:
-#         answer= Answer.objects.filter(question=item.pk)
-#         counter= Answer.objects.filter(question=item.pk).count()
-#         questions.append(item.type+"$$$"+item.text+"###"+str(counter))
-#         for el in answer:
-#             answers.append(el.text)
-
-    
-#     print(questions)
-#     print(answers)
-    
-    
-#     return JsonResponse({
-#         'questions' : questions,
-#         'answers' : answers,
-#         'time' : quiz.time,
-#      })
-
+@login_required(login_url='/user/login/')
 def quiz_data_view (request ,pk):
     questions =[]
     for q in quiz.get_questions():
@@ -99,6 +71,7 @@ def quiz_data_view (request ,pk):
     })
     
 # this view for sending data 
+@login_required(login_url='/user/login/')
 def quiz_data_view (request ,pk):
     quiz=Quiz.objects.get(pk=pk)
     questions =[]
@@ -114,6 +87,8 @@ def quiz_data_view (request ,pk):
 
 
  #save students answers   
+
+@login_required(login_url='/user/login/')
 def save_quiz_view(request,pk):
     #print(request.POST)
     if request.is_ajax():
@@ -167,9 +142,8 @@ def save_quiz_view(request,pk):
             return JsonResponse({'passed': False ,'score':score_ ,'results': results})
 
 
-
-
 #delete quiz
+@login_required(login_url='/user/login/')
 def deleteQuiz(request , pk):
     quiz=Quiz.objects.get(id=pk)
     quiz.delete()
@@ -179,6 +153,19 @@ def deleteQuiz(request , pk):
 
 
 # /////////////////////////////////////////////////
+# arr[0].split(" - ")[1]
+
+# ['q-1$$TorF - 1+1=2', 'q-1-answer - true', 
+# 'q-2$$MCQ - 1+2', 'q-2-answer - 3', 'ch-2 ### q-2 - 4',
+#  'ch-3 ### q-2 - 2']
+
+# answer : q-2-answer = 3
+# choicess : ### q-2 = 2 ,
+
+# solit by $$ for Question type
+# split by  ###  for choice 
+# split by answer -  for answer of Question
+# split by  -  for the value
 
 def convertToArr(obj):
     dele=["csrfmiddlewaretoken","name","time","ispublic","difficulty","type"]
@@ -193,21 +180,6 @@ def convertToArr(obj):
                 }
             arr.append(el)
     return arr
-# arr[0].split(" - ")[1]
-
-# ['q-1$$TorF - 1+1=2', 'q-1-answer - true', 
-# 'q-2$$MCQ - 1+2', 'q-2-answer - 3', 'ch-2 ### q-2 - 4',
-#  'ch-3 ### q-2 - 2']
-
-
-
-# answer : q-2-answer = 3
-# choicess : ### q-2 = 2 ,
-
-# solit by $$ for Question type
-# split by  ###  for choice 
-# split by answer -  for answer of Question
-# split by  -  for the value
 
 def isQuestion(item):
     if "$$" in item:
@@ -250,7 +222,6 @@ def returnChoice(el,question):
                         return el["value"]
                         
     return -1
-
 
 def covertStrToQueries(arr):
     arrOfQ=[]
@@ -305,6 +276,7 @@ def covertStrToQueries(arr):
     print(arrOfQ)
     return arrOfQ
 
+@login_required(login_url='/user/login/')
 def addquiz(request):
     # request.POST["name"]
     name= ""
@@ -316,7 +288,9 @@ def addquiz(request):
     queries=""
     requierd=["name","time","passScore","difficulty"]
     missing=False
-    if request.POST:
+    if not request.POST:
+        return  render(request,'quiz/newquiz.html' , {}) 
+    else:
         print("POST")
         for item in requierd:
             if item not in requierd:
@@ -385,10 +359,12 @@ def addquiz(request):
             if answer == -1:
                 HttpResponse("Something went wrong in adding Answer or Choice")
 
+
     # print("quiz_ id :"+str(quiz.pk))
     print("done :)")
     messages.add_message(request,messages.SUCCESS,"Quiz has been added ")
-    return  render(request,'quiz/newquiz.html' , {}) 
+    return  redirect('/myquizes' )
+    
 
 def addques(text,quiz,t):
     type=""
@@ -406,8 +382,6 @@ def addques(text,quiz,t):
         return question
     except Exception:
         return -1
-    
-
 
 def addAns(text,correct,question,t="noo"):
     new=False
@@ -447,22 +421,8 @@ def addquestion(request):
      
     return  render(request,'teachers/addQuestion.html' , {}) 
 
-
-def startquiz(request):
-    
-    return  render(request,'students/startQuiz.html' , {}) 
-
-
-
-def quizResult(request):
-    
-    return  render(request,'teachers/studentResult.html' , {}) 
-
-
 def addAnswers(request):
     
     return  render(request,'teachers/addAnswers.html' , {}) 
 
-
-    
 

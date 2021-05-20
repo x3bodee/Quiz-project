@@ -14,14 +14,12 @@
           
           
     <!-- Center columns in a Row -->
-<div class="row d-flex justify-content-center text-center">
-  <div class="col-4">
+<div class="row text-center">
   
-  </div>
-  <div class="col-4" style="width: fit-content;" >
+  <div class="col-xs-12">
      
 
-<div class="card m-5" style="width: fit-content;">
+<div class="card m-5">
   <div class="card-header">
     <strong>
       Student's Result from 100%
@@ -43,8 +41,6 @@
         {% for result in  results %}
         
         <tr> <th>{{result.user}}</th>
-          i=10.5555555
-          format(i, ".4f")
         <th>{{result.score}} %</th>
         <th>{{result.date}} </th>
       </tr>
@@ -57,7 +53,7 @@
   </table>
 
   
-</div>
+  </div>
   </div>
   <div class="col-4">
   

@@ -12,9 +12,10 @@
 
 </head>
 
-<h2>Login</h2>
+
 <div class="login">
 <form method="post">
+    <h1 style="margin-bottom: 20px;color: rgb(187, 160, 110);">Login</h1>
     {% csrf_token %}
     {% for field in login_form %}
         <p>
@@ -41,12 +42,6 @@
     <button type="submit" class="btn btn-primary btn-block btn-large">Login</button>
 
 </form>
-
-
-</div>
-<section style="background-color:#616161; height: 1px; margin-top: 792px;"></section>
-
-</div>
 
 
 {% endblock content %}

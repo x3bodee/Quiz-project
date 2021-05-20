@@ -100,15 +100,17 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
       padding: 20px;
     }
-    </style>
+</style>
     
 <div id="fom">
-<form method='POST' enctype="multipart/form-data">
+  <div class="container" style="text-align: center;">
+    
+    <form method='POST' enctype="multipart/form-data">
+    
     {%csrf_token%}
-    {{u_form}}
-    <div style="margin-top: 95px;"></div>
-    <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 90px;">Update</button>
-    <section style="margin-top: 39px;"></section>
+      {{u_form}}
+      <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 60px;">Update</button>
+    </div>
 
 </form>
 </div>

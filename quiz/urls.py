@@ -24,11 +24,11 @@ urlpatterns = [
     path('quiz/<pk>/save/' , save_quiz_view , name="save-view"),
     path('quiz/<pk>/data/' , quiz_data_view , name="quiz-data-view"),
 
-    path('startquiz/' , views.startquiz , name= "startquiz" ),
+    # path('startquiz/' , views.startquiz , name= "startquiz" ),
     path('addquiz/' , views.addquiz , name= "addquiz" ),
-    path('addquestion/' , views.addquestion , name= "addquestion" ),
-    path('addAnswers/' , views.addAnswers , name= "addAnswers" ),
-    path('quizResult/' , views.quizResult , name= "quizResult" ),
+    # path('addquestion/' , views.addquestion , name= "addquestion" ),
+    # path('addAnswers/' , views.addAnswers , name= "addAnswers" ),
+    # path('quizResult/' , views.quizResult , name= "quizResult" ),
    
     
     

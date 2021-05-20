@@ -1,7 +1,7 @@
 
 .navbar-dark .navbar-toggler{
     color: #eee;
-      border-color: #eee;
+    border-color: #eee;
   }
   
   .custom-toggler .navbar-toggler-icon {
@@ -11,4 +11,12 @@
   .custom-toggler.navbar-toggler {
     border-color: #eee;
   } 
+
+main{
+  overflow: auto;
+}
+
+#footerh5{
+  color: white
+}
   

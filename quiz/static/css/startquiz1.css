@@ -2,6 +2,10 @@
     margin-bottom: 10px;
 }
 
+#score-box{
+  margin: 10px 0px;
+    color:white
+}
 
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);

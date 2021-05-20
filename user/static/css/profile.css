@@ -4,6 +4,13 @@ body {
     border-radius: 10px
 }
 
+#id_i{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 .card {
     width: 800px;
     border: none;
@@ -58,7 +65,7 @@ body {
     display: flex;
     background-color: red;
 }
-img{
+#img1{
     border-top-left-radius: 50% 50%;
     border-top-right-radius: 50% 50%;
     border-bottom-right-radius: 50% 50%;

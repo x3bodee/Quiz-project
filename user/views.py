@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate , logout
 from user.forms import RegistrationForm, UserAuthForm, UserUpdateForm
 from user.models import User
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -60,10 +60,12 @@ def profile_view(request):
         return render(request, 'profile.html', context)
     return redirect('login')
 
+@login_required(login_url='/user/login/')
 def logout_view(request):
     logout(request)
     return redirect('home')
 
+@login_required(login_url='/user/login/')
 def update_view(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance=request.user)
@@ -75,14 +77,9 @@ def update_view(request):
         u_form = UserUpdateForm(instance=request.user)
         context={'u_form': u_form}
 
-
-
-    
     return render(request, 'update.html', context)
 
+@login_required(login_url='/user/login/')
 def resetpass_view(request):
-    
-    
-    
     return render(request, 'password_change.html')
  

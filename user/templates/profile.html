@@ -4,20 +4,11 @@
 {% block content %}
 
 
-
-
-
-
-
-
-
 <head>
     <!-- CSS only -->
-    <link rel="stylesheet" href=
-"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-
-
-<style>
+    <!-- <link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"> -->
+    <style>
 
 input { 
   width: 100%; 
@@ -74,179 +65,26 @@ input {
     }
 </style>
 </head>
-  
-<div class="container-sm mt-5" id="fom" >
-   
-        {% csrf_token %}
-    
-        <div id="id_i">
-            <div class="image"> <img width="200" height="200" src="{{profile.img}}"></img> </div>
-            
-            <p class="mb-0 mt-0">User name:<span style="color:rgb(176, 214, 230)">{{profile.username}}</span></p>
-            <p class="mb-0 mt-0">First name:<span style="color:rgb(176, 214, 230)">{{profile.first_name}}</span></p>
-             <p class="mb-0 mt-0">Last name:<span style="color:rgb(176, 214, 230)">{{profile.last_name}}</span></h4>
-             <p class="mb-0 mt-0">Email:<span style="color:blue">{{profile.email}}</span></p>
-                
 
-             <section style="margin-top: 39px;"></section>
-             <div>
-        <a class="btn btn-primary" href='../update' role="button">Update</a>
-        <a class="btn btn-primary" href="{% url 'password_change' %}" role="button">reset password</a>
-        </div>
-        </div>
-        
-        <section style="margin-top: 400px;"></section>
-</div>
+<div class="container mt-5" id="fom">
 
-<section style="margin-top: 340px;"></section>
-{% endblock content %} 
-
-
-
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <head>
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    
-
-</head>
-
-<div class="row py-5 px-4">
-    <div class="col-md-6 mx-auto">
-       
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-2 pb-4 cover">
-                <div class="media align-items-end profile-head" id="infobox">
-                    <div class="profile mr-3"><img width="200" height="200" src="{{profile.img}}"></img></div>
-                    <div id="Pinfo">
-                        <h2> User name:  <span style="color:blue">{{profile.username}}</span></h2>
-                        <h2> First name:  <span style="color:blue">{{profile.first_name}}</span></h2>
-                        <h2> Last name: <span style="color:blue">{{profile.last_name}}</span></h2>
-                        <h2> E-mail:  <span style="color:blue">{{profile.email}}</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
-                    </li>
-                </ul>
-            </div>
-            <div class="px-4 py-3">
-                <h5 class="mb-0"></h5>
-                <div class="p-4 rounded shadow-sm bg-light">
-                    <a class="btn btn-primary" href='../update' role="button">Update</a>
-                    <a class="btn btn-primary" href="{% url 'password_change' %}" role="button">reset password</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div  style="margin-top: 164.5px;"></div> -->
-
-
-<!-- <h2>Profile</h2>
-<div id="profileBox">
-<h2> User name:{{profile.username}} </h2>
-<h2> First name:{{profile.first_name}} </h2>
-<h2> Last name:{{profile.last_name}} </h2>
-<h2> E-mail:{{profile.email}} </h2>
-</div>
-<img width="256" height="256" src="{{profile.img}}"></img>
-<h2>{{profile.user_type}}</h2>
-
-<a class="btn btn-primary" href='../update' role="button">Link</a> -->
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <form method="post">
     {% csrf_token %}
-   
-        <p>
-            {{field.label_tag}}
-            {{field}}
 
-            {% if field.help_text %}
-                <small style="color: grey;">{{field.help_text}}</small>
-            {% endif %}
+    <div id="id_i">
+        <div class="image"> <img id="img1" width="200" height="200" src="{{profile.img}}"></img>
+    </div>
 
-
-<!-- <div class="row py-5 px-4" style="width: 100%;">
-    <div class="col-md-6 mx-auto" style="width: 100%"> 
-       
-        <div class="bg-white shadow rounded overflow-hidden" style="width: 100%">
-            <div class="px-4 pt-2 pb-4 cover">
-                <div class="media align-items-end profile-head" id="infobox" style="width: 100%">
-                    <div class="profile mr-3"><img width="200" height="200" src="{{profile.img}}"></img></div>
-                    <div id="Pinfo"style="width: 100%">
-                        <h2> User name:  <span style="color:blue">{{profile.username}}</span></h2>
-                        <h2> First name:  <span style="color:blue">{{profile.first_name}}</span></h2>
-                        <h2> Last name: <span style="color:blue">{{profile.last_name}}</span></h2>
-                        <h2> E-mail:  <span style="color:blue">{{profile.email}}</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center" style="width: 100%">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
-                    </li>
-                </ul>
-            </div>
-            <div class="px-4 py-3" style="width: 100%;>
-                <h5 class="mb-0"></h5>
-                <div class="p-4 rounded shadow-sm bg-light">
-                    <a class="btn btn-primary" href='../update' role="button">Update</a>
-                    <a class="btn btn-primary" href="{% url 'password_change' %}" role="button">reset password</a>
-                </div>
-            </div>
+    <p class="mb-0 mt-0">User name:<span style="color:rgb(176, 214, 230)">{{profile.username}}</span></p>
+    <p class="mb-0 mt-0">First name:<span style="color:rgb(176, 214, 230)">{{profile.first_name}}</span></p>
+    <p class="mb-0 mt-0">Last name:<span style="color:rgb(176, 214, 230)">{{profile.last_name}}</span>
+        <p class="mb-0 mt-0">Email:<span style="color:rgb(176, 214, 230)">{{profile.email}}</span></p>
+        <section style="margin-top: 15px;"></section>
+        <div>
+            <a class="btn btn-primary" href='../update' role="button">Update</a>
+            <a class="btn btn-primary" href="{% url 'password_change' %}"
+                role="button">reset password</a>
         </div>
     </div>
 </div>
-<div  style="margin-top: 164.5px;"></div> -->
 
-
-
-
+{% endblock content %}
