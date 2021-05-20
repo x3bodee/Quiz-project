@@ -90,7 +90,17 @@
 
     </div>
   </nav>
-  
+  {% if messages%}
+  {% for message in messages %}
+<div class="alert alert-{{message.tags}} dgango-msg" role="alert">
+  <h4 class="alert-heading text-center text-upper">
+    {{message}}
+  </h4>
+
+</div>
+  {%endfor%}
+
+  {% endif %}
   <main  style="min-height: calc( 100vh - (56px + 107px) );background-color:white ;color: #393D3F;">
     {% block content%}
     {% endblock %}
@@ -108,3 +118,8 @@
 </body>
 
 </html>
+<script>
+
+setInterval(()=>document.querySelector('.dgango-msg').remove(),3000)
+
+</script>

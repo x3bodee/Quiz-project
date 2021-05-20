@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{% static 'css/quizlist.css' %}">
     
 </head>
-<div id=baaack">
-<div class="container contai"style="background-color: white;">
+<div id="baaack">
+<div class="container contai">
     
     <!-- button row-->
     <div class="row mt-1">
@@ -26,230 +26,7 @@
       </div>
     <!-- end button row-->
     <div class="row grid mt-2 text-center mx-auto" >
-      <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-        <div class="card"  >
-            <div class="card-body">
-              <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-              <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-              <p class="card-text">  Duration: {{obj.time}} min</p>
-              <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-              <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-              <!-- <a href="#" class="card-link">Start Quiz</a> -->
-            </div>
-            <button class="btn btn-link modal-button btnn"
-            onclick="
-            const url=window.location.href
-            const modalBtns = [...document.getElementsByClassName('modal-button')]
-            modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-            const pk=modalBtn.getAttribute('data-pk')
-            window.location.href=url+pk
-            }))
-            "
-            data-pk="{{obj.pk}}" 
-            data-togglr="modal" 
-            data-target="#quizStartModal"
-            
-            style="text-decoration: none;">Start Quiz</button>
-           
-          </div>
-          
-    
-    </div>
       
-    <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-      <div class="card"  >
-          <div class="card-body">
-            <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-            <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-            <p class="card-text">  Duration: {{obj.time}} min</p>
-            <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-            <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-            <!-- <a href="#" class="card-link">Start Quiz</a> -->
-          </div>
-          <button class="btn btn-link modal-button btnn"
-          onclick="
-          const url=window.location.href
-          const modalBtns = [...document.getElementsByClassName('modal-button')]
-          modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-          const pk=modalBtn.getAttribute('data-pk')
-          window.location.href=url+pk
-          }))
-          "
-          data-pk="{{obj.pk}}" 
-          data-togglr="modal" 
-          data-target="#quizStartModal"
-          
-          style="text-decoration: none;">Start Quiz</button>
-         
-        </div>
-        
-  
-  </div>
-  <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-            <div class="card"  >
-                <div class="card-body">
-                  <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-                  <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-                  <p class="card-text">  Duration: {{obj.time}} min</p>
-                  <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-                  <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-                  <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                </div>
-                <button class="btn btn-link modal-button btnn"
-                onclick="
-                const url=window.location.href
-                const modalBtns = [...document.getElementsByClassName('modal-button')]
-                modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-                const pk=modalBtn.getAttribute('data-pk')
-                window.location.href=url+pk
-                }))
-                "
-                data-pk="{{obj.pk}}" 
-                data-togglr="modal" 
-                data-target="#quizStartModal"
-                
-                style="text-decoration: none;">Start Quiz</button>
-               
-              </div>
-              
-        
-        </div>
-        <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-          <div class="card"  >
-              <div class="card-body">
-                <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-                <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-                <p class="card-text">  Duration: {{obj.time}} min</p>
-                <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-                <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-                <!-- <a href="#" class="card-link">Start Quiz</a> -->
-              </div>
-              <button class="btn btn-link modal-button btnn"
-              onclick="
-              const url=window.location.href
-              const modalBtns = [...document.getElementsByClassName('modal-button')]
-              modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-              const pk=modalBtn.getAttribute('data-pk')
-              window.location.href=url+pk
-              }))
-              "
-              data-pk="{{obj.pk}}" 
-              data-togglr="modal" 
-              data-target="#quizStartModal"
-              
-              style="text-decoration: none;">Start Quiz</button>
-             
-            </div>
-            
-      
-      </div>
-      
-      <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-        <div class="card"  >
-            <div class="card-body">
-              <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-              <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-              <p class="card-text">  Duration: {{obj.time}} min</p>
-              <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-              <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-              <!-- <a href="#" class="card-link">Start Quiz</a> -->
-            </div>
-            <button class="btn btn-link modal-button btnn"
-            onclick="
-            const url=window.location.href
-            const modalBtns = [...document.getElementsByClassName('modal-button')]
-            modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-            const pk=modalBtn.getAttribute('data-pk')
-            window.location.href=url+pk
-            }))
-            "
-            data-pk="{{obj.pk}}" 
-            data-togglr="modal" 
-            data-target="#quizStartModal"
-            
-            style="text-decoration: none;">Start Quiz</button>
-           
-          </div>
-          
-    
-    </div>
-
-
-    <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-      <div class="card"  >
-          <div class="card-body">
-            <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-            <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-            <p class="card-text">  Duration: {{obj.time}} min</p>
-            <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-            <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-            <!-- <a href="#" class="card-link">Start Quiz</a> -->
-          </div>
-          <button class="btn btn-link modal-button btnn"
-          onclick="
-          const url=window.location.href
-          const modalBtns = [...document.getElementsByClassName('modal-button')]
-          modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-          const pk=modalBtn.getAttribute('data-pk')
-          window.location.href=url+pk
-          }))
-          "
-          data-pk="{{obj.pk}}" 
-          data-togglr="modal" 
-          data-target="#quizStartModal"
-          
-          style="text-decoration: none;">Start Quiz</button>
-         
-        </div>
-        
-  
-  </div>
-
-
-  <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-    <div class="card"  >
-        <div class="card-body">
-          <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
-          <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
-          <p class="card-text">  Duration: {{obj.time}} min</p>
-          <p class="card-text">  Score To Pass: {{obj.score_to_pass}}</p>
-          <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
-          <!-- <a href="#" class="card-link">Start Quiz</a> -->
-        </div>
-        <button class="btn btn-link modal-button btnn"
-        onclick="
-        const url=window.location.href
-        const modalBtns = [...document.getElementsByClassName('modal-button')]
-        modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-        const pk=modalBtn.getAttribute('data-pk')
-        window.location.href=url+pk
-        }))
-        "
-        data-pk="{{obj.pk}}" 
-        data-togglr="modal" 
-        data-target="#quizStartModal"
-        
-        style="text-decoration: none;">Start Quiz</button>
-       
-      </div>
-      
-
-</div>
-
 
 
 
@@ -262,8 +39,8 @@
         <!-- start of quiz -->
         <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
           
-            <div class="card"  >
-                <div class="card-body">
+            <div class="card" style="background-color: white;" >
+                <div class="card-body" >
                   <h5 class="card-title">Quiz Name: {{obj.name}}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{obj.user}}</h6>
                   <p class="card-text">  Number of questions: {{obj.number_of_question}}</p>
@@ -273,25 +50,27 @@
                   <h6 class="card-subtitle mb-2  " id="easy">{{obj.difficulty}}</h6>
                   <!-- <a href="#" class="card-link">Start Quiz</a> -->
                 </div>
-                <button class="btn btn-link modal-button btnn"
-                onclick="
-                const url=window.location.href
-                const modalBtns = [...document.getElementsByClassName('modal-button')]
-                modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
-                const pk=modalBtn.getAttribute('data-pk')
-                window.location.href=url+pk
-                }))
-                "
-                data-pk="{{obj.pk}}" 
-                data-togglr="modal" 
-                data-target="#quizStartModal"
-                
-                style="text-decoration: none;">Start Quiz</button>
-               
               </div>
+               <div class="card-footer text-muted" >
+              <button class="btnn btn-link modal-button btnn btn-outline-success m-1 p-1"
+              onclick="
+              const url=window.location.href
+              const modalBtns = [...document.getElementsByClassName('modal-button')]
+              modalBtns.forEach(modalBtn=> modalBtn.addEventListener('click',()=>{
+              const pk=modalBtn.getAttribute('data-pk')
+              window.location.href=url+pk
+              }))
+              "
+              data-pk="{{obj.pk}}" 
+              data-togglr="modal" 
+              data-target="#quizStartModal"
+              
+              style="text-decoration: none;">Start Quiz</button></div>
+              </div>
+
               
         
-        </div>
+        
         
         <!-- end of quiz -->
        
