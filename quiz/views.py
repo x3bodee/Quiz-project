@@ -393,6 +393,7 @@ def addques(text,quiz,t):
     except Exception:
         return -1
 
+
 def addAns(text,correct,question,t="noo"):
     new=False
     flag=False
