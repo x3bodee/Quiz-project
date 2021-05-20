@@ -10,4 +10,5 @@ urlpatterns = [
     path('update/' , user_views.update_view ,name="update"),
     path('resetpass/' , user_views.resetpass_view ,name="resetpass")
     
+    
 ]
