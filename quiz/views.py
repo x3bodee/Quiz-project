@@ -5,6 +5,7 @@ from .models import Quiz
 from django.views.generic import ListView
 from question.models import Answer, Question
 from result.models import Result
+from quiz.models import Quiz
 
 # Create your views here.
 def home(request):
@@ -38,7 +39,43 @@ def quiz_view(request , pk):
 
 
     
+# def quiz_data_view (request ,pk):
+#     quiz=Quiz.objects.get(pk=pk)
+#     questionss=Question.objects.filter(quiz=pk)
+#     questions=[]
+#     answers=[]
+#     for item in questionss:
+#         answer= Answer.objects.filter(question=item.pk)
+#         counter= Answer.objects.filter(question=item.pk).count()
+#         questions.append(item.type+"$$$"+item.text+"###"+str(counter))
+#         for el in answer:
+#             answers.append(el.text)
 
+    
+#     print(questions)
+#     print(answers)
+    
+    
+#     return JsonResponse({
+#         'questions' : questions,
+#         'answers' : answers,
+#         'time' : quiz.time,
+#      })
+
+def quiz_data_view (request ,pk):
+    questions =[]
+    for q in quiz.get_questions():
+        answers=[]
+        for a in q.get_answers():
+            answers.append(a.text)
+            # print(a.text)
+        # print("q.get_answers")
+        # print(answers)
+        questions.append({str(q):answers})
+    return JsonResponse({
+        'data' : questions,
+        'time' : quiz.time,
+    })
     
 # this view for sending data 
 def quiz_data_view (request ,pk):
@@ -48,6 +85,9 @@ def quiz_data_view (request ,pk):
         answers=[]
         for a in q.get_answers():
             answers.append(a.text)
+            print(a.text)
+        print("q.get_answers")
+        print(answers)
         questions.append({str(q):answers})
     return JsonResponse({
         'data' : questions,
@@ -125,50 +165,267 @@ def deleteQuiz(request , pk):
     return redirect('/myquizes' )
 
 
+# /////////////////////////////////////////////////
+
 def convertToArr(obj):
     dele=["csrfmiddlewaretoken","name","time","ispublic","difficulty","type"]
     arr=[]
     for item in obj:
-        print(item)
+        # print(item)
         if item not in dele:
-            arr.append(item+" - "+obj[item])
+            el={
+                "item":item,
+                "value":obj[item],
+                "flag":False,
+                }
+            arr.append(el)
     return arr
+# arr[0].split(" - ")[1]
 
-#['q-1$$TorF - 1+1=2', 'q-1-answer - true', 'q-2 - 5*5',
-# 'q-2-answer - 25', 'ch-2 ### q-2 - 22', 'ch-3 ### q-2 - 23', 
-# 'ch-4 ### q-2 - 24']
+# ['q-1$$TorF - 1+1=2', 'q-1-answer - true', 
+# 'q-2$$MCQ - 1+2', 'q-2-answer - 3', 'ch-2 ### q-2 - 4',
+#  'ch-3 ### q-2 - 2']
+
+
+
+# answer : q-2-answer = 3
+# choicess : ### q-2 = 2 ,
+
+# solit by $$ for Question type
+# split by  ###  for choice 
+# split by answer -  for answer of Question
+# split by  -  for the value
+
+def isQuestion(item):
+    if "$$" in item:
+        print("this is question")
+        return True
+    return False
+
+def isChoice(item):
+    if " ### " in item:
+        print("this is Choice")
+        return True
+    return False
+
+def retAnswer(arr,q,flag=True):
+    # search for answer of this question
+    ttt=""
+    if q != -1:
+        ttt= q+"-answer"
+        print(ttt)
+    for el in arr:
+        if ttt in el["item"]:
+            print(el)
+            if el["value"] != -1:
+                val = el["value"]
+                print(val)
+                if flag:
+                    el["flag"]=True
+                    
+                return val
+
+    return -1
+
+def returnChoice(el,question):
+
+    if isChoice(el["item"]):
+            if el["item"] != -1:
+                q=el["item"].split(" ### ")
+                if q[1] == question:
+                    if el["value"] != -1:
+                        return el["value"]
+                        
+    return -1
+
 
 def covertStrToQueries(arr):
-    for item in arr:
-        subarr = item.split(" - ")
-        if subarr[0]== "q-":
-            print()
-        print(subarr)
-    print("Quistion : ")
-    print("choiceis : ")
-    print(arr)
+    arrOfQ=[]
+    i=-1
+    for element in arr:
+        i+=1
+        print("--------------------")
+        print("itiration number :"+str(i))
+        query=""
+        question=""
+        answer=""
+        print("arr before Question: ")
+        print(arr)
+        print("item : "+element["item"])
+        if isQuestion(element["item"]) and element["flag"] == False:
+            if element["value"] != -1:
+                ttr = element["item"]
+                tt = ttr.split("$$")
+                query+=tt[1]+","+element["value"]+","
+                question=tt[0]
+                element["flag"]=True
 
+            print("question is :"+question)
+            print("the answer is :")
+            print("arr before answer: ")
+            print(arr)
+            if retAnswer(arr,question,False) != -1:
+                answer=str(retAnswer(arr,question))
+                query+=answer+","
+                print(answer)
+                
+            
+            # print(arr)
+
+            print("the choicess is :")
+            print("arr before choicess: ")
+            print(arr)
+            for el in arr:
+                print(returnChoice(el,question))
+                if returnChoice(el,question) != -1 and el["flag"]== False:
+                    choice=str(returnChoice(el,question))
+                    query+=choice+","
+                    print(choice)
+                    el["flag"]=True
+        if query != "":
+            arrOfQ.append(query)
+            
+
+    print("print the array :")
+    print(arr)
+    print("print the query :")
+    print(arrOfQ)
+    return arrOfQ
 
 def addquiz(request):
-    
+    # request.POST["name"]
+    name= ""
+    time= ""
+    passScore= ""
+    dif= ""
+    public= ""
+    quiz=""
+    queries=""
+    requierd=["name","time","passScore","difficulty"]
+    missing=False
     if request.POST:
         print("POST")
-        obj=request.POST
-        name = obj["name"]
-        time = obj["time"]
-        dif = obj["difficulty"]
-        public=""
-        if obj["ispublic"] == "public":
-            public = obj["ispublic"]
+        for item in requierd:
+            if item not in requierd:
+                missing=True
+        if not missing:
+            obj=request.POST
+            name = obj["name"]
+            time = obj["time"]
+            passScore = obj["passScore"]
+            dif = obj["difficulty"]
+        else : 
+            HttpResponse("erorr in post data")
         arr =convertToArr(obj)
         print(arr)
-        covertStrToQueries(arr)
-        # print(request.POST.remove(name))
-        
-        
+        queries=covertStrToQueries(arr)
+        print("name :"+name)
+        print("time :"+time)
+        print("passScore :"+passScore)
+        print("dif :"+dif)
+        NoQ=len(queries)
+        if "ispublic" in obj:
+            public = obj["ispublic"]
+            print("public :"+public)
+            quiz = Quiz(
+                name=name,
+                number_of_question= NoQ,
+                time=time,
+                score_to_pass=passScore,
+                difficulty= dif,
+                created_by= request.user,
+                quiz_type= False,
+            )
+        else:
+            quiz = Quiz(
+                name=name,
+                number_of_question= NoQ,
+                time=time,
+                score_to_pass=passScore,
+                difficulty= dif,
+                created_by= request.user,
+                quiz_type= True,
+            )
+        quiz.save()
 
+    #Answer, Question
+    #['TorF,1+1=2,true,', 'MCQ,1+2,3,2,4,5,']
+    for item in queries:
+        el=item.split(",")
+        el.pop(-1)
+        t=el[0]
+        q=el[1]
+        
+        question = addques(q,quiz,t)
+        if question == -1:
+            HttpResponse("something went wrong in adding Question")
+        else:
+            print (el[1]+" question is add to the database")
+
+        answer_text=el[2]
+        answer = addAns(answer_text,True,question,t)
+        if answer == -1:
+            HttpResponse("Something went wrong in adding Answer or Choice")
+        
+        for ch in el[3:]:
+            answer = addAns(ch,False,question,t)
+            if answer == -1:
+                HttpResponse("Something went wrong in adding Answer or Choice")
+
+    # print("quiz_ id :"+str(quiz.pk))
     print("done :)")
     return  render(request,'quiz/newquiz.html' , {}) 
+
+def addques(text,quiz,t):
+    type=""
+    if t == "MCQ":
+        type="multiple"
+    else:
+        type="True or False"
+    question = Question(
+        text=text,
+        quiz=quiz,
+        type=type,
+    )
+    try:
+        question.save()
+        return question
+    except Exception:
+        return -1
+
+def addAns(text,correct,question,t="noo"):
+    new=False
+    flag=False
+    if t == "noo":
+        1+1
+    elif t == "MCQ":
+        type="multiple"
+    else:
+        flag=True
+        type="True or False"
+        text=text.capitalize()
+        if text == "True":
+            new=False
+        elif text == "False":
+            new = True
+            
+    answer = Answer(
+        text = text,
+        correct = correct,
+        question = question,
+    )
+    answer2 = Answer(
+        text = new,
+        correct = False,
+        question = question,
+    )
+    try:
+        answer.save()
+        if flag:
+            answer2.save()
+        return answer
+    except Exception:
+        return -1
 
 def addquestion(request):
      

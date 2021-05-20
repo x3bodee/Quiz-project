@@ -70,6 +70,7 @@ $.ajax({
                             <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
                             <label for="${question}">${answer}</label>
                         </div>
+                        
                     `
                 })
             }
