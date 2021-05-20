@@ -1,0 +1,79 @@
+.content{
+    max-width: 80%;
+    padding: 15px 20px;
+    background-color: #F5CB5C;
+    text-align: left;
+    border-radius: 5px;
+    color: white;
+}
+
+#addQuizForm{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+}
+
+.row{
+    margin-top: 3px;
+}
+
+.row>*{
+    flex-shrink: 0;
+    width: 97%;
+    max-width: none;
+}
+
+.borderr{
+    border: 1px dashed white;
+    padding: 3px;
+}
+
+.btn-add{
+    margin-top: 3px;
+}
+
+.btnn{
+    width: 100%;
+}
+
+label{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding: 5px 5px;
+}
+
+input ,select{
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: #f5cc5c;
+    width: 100%;
+    margin: 5px;
+    color: white;
+    
+  }
+
+input:focus ,select:focus{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    color: white;
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: black;
+  }
+
+  select, option{
+      color: black;
+  }

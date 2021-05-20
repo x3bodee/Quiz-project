@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/startquiz1.css' %}">
+</head>
+
+
+<!-- Center columns in a Row -->
+<div class="row d-flex justify-content-center text-center">
+  <div class="col-4">
+    
+  </div>
+  <div class="col-4 pt-5">
+    <h5 class="card-title" style="color: seashell;">You already submitted {{obj.name}} quiz</h5>
+  
+    <h6 class="card-subtitle mb-2  " id="easy" style="color: seashell;">Your result is :{{resutl.score}}</h6>
+    
+  </div>
+  <div class="col-4">
+   
+  </div>
+</div>
+
+  
+</div>
+</div>
+</div>
+
+
+
+{% endblock  %}

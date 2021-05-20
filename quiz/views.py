@@ -5,28 +5,60 @@ from .models import Quiz
 from django.views.generic import ListView
 from question.models import Answer, Question
 from result.models import Result
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
- 
+    
     return  render(request,'home.html' , {}) 
+    
 
+#show all quizes
 
 class QuisListView(ListView):
     model=Quiz
     template_name='quiz/quizlist.html'
 
+#show quizes that user create
+def myquizes(request): 
+    #user=request.user
+    myQui = Quiz.objects.all()
+    return render(request , 'quiz/myquizes.html' , 
+    {"ob" : myQui  })
+
+#start quiz
 def quiz_view(request , pk):
     
-    try:
-        quiz=Quiz.objects.get(pk=pk)
-    except Exception:
-        return HttpResponse("error")
+
+    quiz=Quiz.objects.get(pk=pk)
+    counter = Result.objects.filter(quiz=pk,user=request.user.id).count()
+    #result=Result.objects.get(pk=pk)
+    print(quiz.quiz_type)
+    if quiz.quiz_type==True:
+        return render(request , 'quiz/startQuiz.html' ,
+        {   
+        "obj" : quiz
+        } )
+    elif  quiz.quiz_type==False:
+        if counter > 0 :
+            result = Result.objects.get(quiz=pk,user=request.user.id)
+            return render(request , 'quiz/private.html' ,
+            {   
+                "obj" : quiz,
+                "resutl":result,
+            } )
+        else:
+            return render(request , 'quiz/startQuiz.html' ,
+        {   
+        "obj" : quiz
+        } )
+        
+
+
+
+
     
-    return render(request , 'quiz/startQuiz.html' ,
-    {   
-    "obj" : quiz
-    } )
+
     
 # this view for sending data 
 def quiz_data_view (request ,pk):
@@ -59,6 +91,7 @@ def save_quiz_view(request,pk):
 
         user=request.user
         quiz=Quiz.objects.get(pk=pk)
+        
 
         score = 0
         multipler = 100/ quiz.number_of_question
@@ -81,7 +114,19 @@ def save_quiz_view(request,pk):
             else:
                 results.append({str(q):'Not answered'})
         score_ =score * multipler 
-        Result.objects.create(quiz=quiz,user=user,score=score_)
+        print("the count of the ruselt :")
+        # print(Result.objects.filter(quiz=quiz.id,user=user.id).count())
+        if Result.objects.filter(quiz=quiz.id,user=user.id).count() > 0:
+            print('there is user')
+            Result.objects.filter(quiz=quiz.id,user=user.id).delete()
+            print("old score is deleted")
+            Result.objects.create(quiz=quiz,user=user,score=score_)
+            print("the score is replaced")
+        else:
+            print('there is no old score')
+            Result.objects.create(quiz=quiz,user=user,score=score_)
+            
+            
 
         if score_ >= quiz.score_to_pass:
             return JsonResponse({'passed':True,'score':score_ ,'results': results})
@@ -92,11 +137,60 @@ def save_quiz_view(request,pk):
 
 
 
+#delete quiz
+def deleteQuiz(request , pk):
+    quiz=Quiz.objects.get(id=pk)
+    quiz.delete()
+    context= {'item':quiz}
+    messages.add_message(request,messages.SUCCESS,"quiz deleted ")
+    return redirect('/myquizes' )
+
+
+def convertToArr(obj):
+    dele=["csrfmiddlewaretoken","name","time","ispublic","difficulty","type"]
+    arr=[]
+    for item in obj:
+        print(item)
+        if item not in dele:
+            arr.append(item+" - "+obj[item])
+    return arr
+
+#['q-1$$TorF - 1+1=2', 'q-1-answer - true', 'q-2 - 5*5',
+# 'q-2-answer - 25', 'ch-2 ### q-2 - 22', 'ch-3 ### q-2 - 23', 
+# 'ch-4 ### q-2 - 24']
+
+def covertStrToQueries(arr):
+    for item in arr:
+        subarr = item.split(" - ")
+        if subarr[0]== "q-":
+            print()
+        print(subarr)
+    print("Quistion : ")
+    print("choiceis : ")
+    print(arr)
 
 
 def addquiz(request):
-     
-    return  render(request,'quiz/addQuiz.html' , {}) 
+    
+    if request.POST:
+        print("POST")
+        obj=request.POST
+        name = obj["name"]
+        time = obj["time"]
+        dif = obj["difficulty"]
+        public=""
+        if obj["ispublic"] == "public":
+            public = obj["ispublic"]
+        arr =convertToArr(obj)
+        print(arr)
+        covertStrToQueries(arr)
+        # print(request.POST.remove(name))
+        
+        
+
+    print("done :)")
+    messages.add_message(request,messages.SUCCESS,"Quiz has been added ")
+    return  render(request,'quiz/newquiz.html' , {}) 
 
 def addquestion(request):
      
@@ -107,9 +201,7 @@ def startquiz(request):
     
     return  render(request,'students/startQuiz.html' , {}) 
 
-def myquizes(request ):
 
-    return  render(request,'Quiz/myquizes.html' , { }) 
 
 def quizResult(request):
     

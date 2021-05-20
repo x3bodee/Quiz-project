@@ -2,8 +2,10 @@
 {% load static %}
 {% block content %}
 
+
 <head>
-    <link rel="stylesheet" href="{% static 'css/updatequiz.css' %}">
+ 
+  <link rel="stylesheet" href="{% static 'css/myquizez.css' %}">
 </head>
 
 <div class="container contai">
@@ -17,178 +19,53 @@
     <!-- end button row-->
     <div class="row grid mt-2 text-center mx-auto" >
         
-      {% for obj1 in object_list %}
+     
         <!-- start of quiz -->
-        <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-          
-          <div class="card"  >
-              <div class="card-body">
-                <h5 class="card-title">Quiz Name: {{obj1.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{obj1.user}}</h6>
-                <p class="card-text">  Number of questions: {{obj1.number_of_question}}</p>
-                <p class="card-text">  Duration: {{obj1.time}} min</p>
-                <p class="card-text">  Score To Pass: {{obj1.score_to_pass}}</p>
-                <h6 class="card-subtitle mb-2  " id="easy">{{obj1.difficulty}}</h6>
-                <!-- <a href="#" class="card-link">Start Quiz</a> -->
-              </div>
-              <button class="btn btn-link modal-button btnn" id="start-but" data-pk={{obj1.pk}} style="text-decoration: none;">Start Quiz</button>
-             
-            </div>
+        
+        
+       
+
+
       
-      </div>
+
+
+       
       <!-- end of quiz -->
      
+     
+
+      {% for myquiz in  ob %}
       
-      {% endfor %}
-        
 <!-- start of quiz -->
 <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
+  <form method="POST" action="">
     <div class="card"  >
+      
         <div class="card-body">
-          <h5 class="card-title">Quiz title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
+          
+          <h5 class="card-title">Quiz Name: {{myquiz.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{myquiz.user}}</h6>
+          <p class="card-text">  Number of questions: {{myquiz.number_of_question}}</p>
+          <p class="card-text">  Duration: {{myquiz.time}} min</p>
+          <p class="card-text">  Score To Pass: {{myquiz.score_to_pass}} % </p>
+          <h6 class="card-subtitle mb-2  " id="easy">{{myquiz.difficulty}}</h6>
+          
           <!-- <a href="#" class="card-link">Start Quiz</a> -->
         </div>
         
       </div>
       <div class="card-footer text-muted">
-        <button type="button" class="btn btn-outline-success">Update</button>
-        <button type="button" class="btn btn-outline-danger">Delete</button>
-        <button type="button" class="btn btn-outline-warning">Result</button>
+        <a type="button" class="btnn btn-outline-success m-1 p-1">Update</a>
+        <a type="button" class="btnn btn-outline-danger m-1 p-1"  href="{% url 'delete_quiz' pk=myquiz.id%}"> delete </a>
+
+        <a type="button" class="btnn btn-outline-warning m-1 p-1" href="{% url 'results_view' id=myquiz.id %}" >Result</a>
+        
+        
     </div>
+    </form>
 </div>
 <!-- end of quiz -->
-
-                <!-- start of quiz -->
-                <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                    <div class="card"  >
-                        <div class="card-body">
-                          <h5 class="card-title">Quiz title</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                          <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                        </div>
-                        
-                      </div>
-                      <div class="card-footer text-muted">
-                        <button type="button" class="btn btn-outline-success">Update</button>
-                        <button type="button" class="btn btn-outline-danger">Delete</button>
-                        <button type="button" class="btn btn-outline-warning">Result</button>
-                    </div>
-                </div>
-                <!-- end of quiz -->
-
-                       
-
-
-               <!-- start of quiz -->
-               <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                <div class="card"  >
-                    <div class="card-body">
-                      <h5 class="card-title">Quiz title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                      <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                    </div>
-                    
-                  </div>
-                  <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-outline-success">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    <button type="button" class="btn btn-outline-warning">Result</button>
-                </div>
-            </div>
-            <!-- end of quiz -->
-
-            <!-- start of quiz -->
-            <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                <div class="card"  >
-                    <div class="card-body">
-                      <h5 class="card-title">Quiz title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                      <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                    </div>
-                    
-                  </div>
-                  <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-outline-success">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    <button type="button" class="btn btn-outline-warning">Result</button>
-                </div>
-            </div>
-            <!-- end of quiz -->
-
-            <!-- start of quiz -->
-            <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                <div class="card"  >
-                    <div class="card-body">
-                      <h5 class="card-title">Quiz title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                      <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                    </div>
-                    
-                  </div>
-                  <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-outline-success">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    <button type="button" class="btn btn-outline-warning">Result</button>
-                </div>
-            </div>
-            <!-- end of quiz -->
-
-            <!-- start of quiz -->
-            <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                <div class="card"  >
-                    <div class="card-body">
-                      <h5 class="card-title">Quiz title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                      <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                    </div>
-                    
-                  </div>
-                  <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-outline-success">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    <button type="button" class="btn btn-outline-warning">Result</button>
-                </div>
-            </div>
-            <!-- end of quiz -->
-
-            <!-- start of quiz -->
-            <div class="col-12  col-xs-6 col-md-4 col-xl-3 mt-2 manga" >
-                <div class="card"  >
-                    <div class="card-body">
-                      <h5 class="card-title">Quiz title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Created by</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <h6 class="card-subtitle mb-2  " id="easy">Hard</h6>
-                      <!-- <a href="#" class="card-link">Start Quiz</a> -->
-                    </div>
-                    
-                  </div>
-                  <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-outline-success">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    <button type="button" class="btn btn-outline-warning">Result</button>
-                </div>
-            </div>
-            <!-- end of quiz -->
-
-            
-
-                
-                
-        
+{%endfor%}
 
     </div>  
 </div>
@@ -197,6 +74,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script src="{% static 'js/filter.js' %}"></script>
+
 
 {% endblock  %}

@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate , logout
-from user.forms import RegistrationForm, UserAuthForm
+from user.forms import RegistrationForm, UserAuthForm, UserUpdateForm
 from user.models import User
+from django.contrib import messages
+
+
+
 
 def signup_view(request):
     context = {}
@@ -25,10 +29,10 @@ def signup_view(request):
     return render(request, 'signup.html', context)
 
 def login_view(request):
-
     context = {}
     user =request.user
     if user.is_authenticated:
+        messages.add_message(request,messages.SUCCESS,"loggined succseefuly ")
         return redirect('home')
     
     if request.POST:
@@ -59,3 +63,26 @@ def profile_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+def update_view(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        if u_form.is_valid():
+            u_form.save()
+            
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        context={'u_form': u_form}
+
+
+
+    
+    return render(request, 'update.html', context)
+
+def resetpass_view(request):
+    
+    
+    
+    return render(request, 'password_change.html')
+ 

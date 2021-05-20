@@ -1,7 +1,10 @@
-from django.contrib import auth 
-from django.urls import path 
-from django.contrib.auth import views as as_view ,views as auth_views 
-from user import views as user_views 
+from django.contrib import auth
+from django.urls import path
+from django.contrib.auth import views as as_view ,views as auth_views
+from user import views as user_views
+
+
+
 
 urlpatterns = [
     path('login/' , user_views.login_view ,name="login"),

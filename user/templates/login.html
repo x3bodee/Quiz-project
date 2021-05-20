@@ -2,9 +2,13 @@
 
 {% load static %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
+</head>
 
 <h2>Login</h2>
+<div class="login">
 <form method="post">
     {% csrf_token %}
     {% for field in login_form %}
@@ -29,14 +33,18 @@
                 </div>
             {% endif %}
             
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Login</button>
 
 </form>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 =======
 </div>
 <section style="background-color:#616161; height: 1px; margin-top: 792px;"></section>
 >>>>>>> Stashed changes
+=======
+</div>
+>>>>>>> 68ec2c34b807f54b5834757942e1d5574af90c8c
 
 {% endblock content %}
