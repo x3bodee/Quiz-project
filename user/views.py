@@ -6,7 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-
+# if it's get request it's will just load the page if it's post then
+# it's will create new user record 
 def signup_view(request):
     context = {}
     if request.POST:
@@ -28,6 +29,10 @@ def signup_view(request):
         context['registration_form'] = form
     return render(request, 'signup.html', context)
 
+# if it's get request it's will just load the page if it's post then
+# it's will check if the user entered username and pass
+# is correct then it's will login if not then it's 
+# will not login
 def login_view(request):
     context = {}
     user =request.user
@@ -52,6 +57,8 @@ def login_view(request):
     context['login_form'] = form
     return render(request, 'login.html', context)
 
+# get all user info and send it to profile
+# page to presinte it to the user
 def profile_view(request):
     context = {}
     user = request.user
@@ -60,11 +67,14 @@ def profile_view(request):
         return render(request, 'profile.html', context)
     return redirect('login')
 
+# this will logout if the user is logged in
 @login_required(login_url='/user/login/')
 def logout_view(request):
     logout(request)
     return redirect('home')
 
+# this will open the open the update user data
+# open the update page with the form 
 @login_required(login_url='/user/login/')
 def update_view(request):
     if request.method == 'POST':
@@ -79,7 +89,4 @@ def update_view(request):
 
     return render(request, 'update.html', context)
 
-@login_required(login_url='/user/login/')
-def resetpass_view(request):
-    return render(request, 'password_change.html')
- 
+

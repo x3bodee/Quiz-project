@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'css/newquiz.css' %}">
 </head>
 
-<div class="container content mt-3">
+<div class="container content mt-5">
     <form id="addQuizForm" method="POST">
         <input type="hidden" name="csrfmiddlewaretoken" value="">
         
@@ -38,15 +38,6 @@
                 <option value="hard">Hard</option>
             </select>
         </div>
-        
-       
-        <!-- <div id="q0" class="row">
-            <label for="">Quistion</label>
-            <input type="text" name="q0" placeholder="1 + 1 ?">
-            <label id="choice-1-1" for="">add choice</label>
-            <button onclick="addChoice()" id="addch" type="button">Add Choice</button>
-            <button onclick="deleteChoice()" id="delete" type="button">delete Choice</button>
-        </div> -->
 
         <div id="add" class="row borderr">
             <label for="">add quistion</label>

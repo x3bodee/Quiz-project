@@ -153,20 +153,25 @@ def deleteQuiz(request , pk):
 
 
 # /////////////////////////////////////////////////
-# arr[0].split(" - ")[1]
 
+# data will come form the fron-end with this format
 # ['q-1$$TorF - 1+1=2', 'q-1-answer - true', 
 # 'q-2$$MCQ - 1+2', 'q-2-answer - 3', 'ch-2 ### q-2 - 4',
 #  'ch-3 ### q-2 - 2']
 
 # answer : q-2-answer = 3
 # choicess : ### q-2 = 2 ,
-
 # solit by $$ for Question type
 # split by  ###  for choice 
 # split by answer -  for answer of Question
 # split by  -  for the value
 
+# this will convert the POST to array of dictionary
+# dictionary = {
+# item: this will store the name of the tag element
+# value : this will store the value of the tag element
+# flag : alwayz false , this if it's has been added to data base
+# }
 def convertToArr(obj):
     dele=["csrfmiddlewaretoken","name","time","ispublic","difficulty","type"]
     arr=[]
@@ -181,18 +186,23 @@ def convertToArr(obj):
             arr.append(el)
     return arr
 
+# this method will check if the element is question then it's will return true
 def isQuestion(item):
     if "$$" in item:
         print("this is question")
         return True
     return False
 
+# this method will check if the element is choice then it's will return true
 def isChoice(item):
     if " ### " in item:
         print("this is Choice")
         return True
     return False
 
+# you will give this method the question name 
+# and it's will return the answer of the this question 
+# if it's available
 def retAnswer(arr,q,flag=True):
     # search for answer of this question
     ttt=""
@@ -212,6 +222,7 @@ def retAnswer(arr,q,flag=True):
 
     return -1
 
+# this method will check if the element is choice and return it's value
 def returnChoice(el,question):
 
     if isChoice(el["item"]):
@@ -223,6 +234,8 @@ def returnChoice(el,question):
                         
     return -1
 
+# this will use all the above method to create the query for this quiz
+# and return array of query 
 def covertStrToQueries(arr):
     arrOfQ=[]
     i=-1
@@ -276,6 +289,11 @@ def covertStrToQueries(arr):
     print(arrOfQ)
     return arrOfQ
 
+# if it's get request it's will load the page
+# if it's post then it's will get the quiz and it's questions 
+# and choices and convert them to queries then add them 
+# to the data base under one quiz record
+
 @login_required(login_url='/user/login/')
 def addquiz(request):
     # request.POST["name"]
@@ -288,6 +306,7 @@ def addquiz(request):
     queries=""
     requierd=["name","time","passScore","difficulty"]
     missing=False
+
     if not request.POST:
         return  render(request,'quiz/newquiz.html' , {}) 
     else:
@@ -365,7 +384,7 @@ def addquiz(request):
     messages.add_message(request,messages.SUCCESS,"Quiz has been added ")
     return  redirect('/myquizes' )
     
-
+# this will add the question to the database
 def addques(text,quiz,t):
     type=""
     if t == "MCQ":
@@ -383,6 +402,7 @@ def addques(text,quiz,t):
     except Exception:
         return -1
 
+# this will add the choice to the database
 def addAns(text,correct,question,t="noo"):
     new=False
     flag=False
@@ -417,12 +437,14 @@ def addAns(text,correct,question,t="noo"):
     except Exception:
         return -1
 
+
+###///////////////////////
+# this will be for update page
+
 def addquestion(request):
-     
     return  render(request,'teachers/addQuestion.html' , {}) 
 
 def addAnswers(request):
-    
     return  render(request,'teachers/addAnswers.html' , {}) 
 
 
